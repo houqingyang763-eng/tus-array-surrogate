@@ -11,7 +11,7 @@
 5. 长期候选路线仍是单阵元大区域复声场预测 + 多阵元相干叠加，用于支持阵元数量和阵列形状变化。
 6. DeepTFUS 复现阶段 A-D 已收束；当前只把它作为 3D pmax baseline 和工程参考。
 7. 项目采用“稳定知识—任务合同—执行证据—人工验收”四层工作流。
-8. `docs/research_tasks.md` 已改为少量用户批准的自主 Research Mission；首个试点 R001 等待选择三篇代表论文。
+8. `R001` 已指定三篇论文，并改为单篇优先的多 Agent 精读；当前只执行第一篇 FDE-UNet 论文。
 
 依据：
 
@@ -23,8 +23,8 @@
 
 ## 当前自主 Mission
 
-- `R001`：三篇论文多 Agent 阅读与初版 research taste 校准。
-- 状态：`approved / waiting_sources`。
+- `R001`：单篇优先的多 Agent 精读与初版 research taste 校准。
+- 状态：`review / paper_1`，等待用户批注后再决定是否进入第二篇。
 - 入口：`docs/research_tasks.md`。
 - 中间产物：`docs/agent_runs/R001/`（执行时创建）。
 
@@ -32,8 +32,8 @@
 
 ## 近期关注
 
-1. **选择 R001 的三篇代表论文**
-   需要覆盖主线论文、局部可借鉴论文和应降级 / 放弃论文，第四篇留作盲测。
+1. **验收 FDE-UNet 综合精读报告**
+   三个 Agent 已完成逐节取证、数学 / 物理深挖和反方迁移审计；当前等待用户逐项批注，再决定是否进入第二篇。
 
 2. **大区域裁剪范围与第一版分辨率**
    需要确定坐标系、物理覆盖和 `128^3 / 160^3 / 200^3 / 非立方网格` 的最低可用方案。
@@ -50,6 +50,13 @@
 ---
 
 ## 时间线（最新在上）
+
+### 2026-07-15：R001 改为单篇优先的多 Agent 精读
+
+- 用户指定 FDE-UNet、3-D elastic Helmholtz operator、scattered wavefield neural operator 三篇论文；
+- 明确反对多篇泛泛扫读，要求多个 Agent 对同一篇逐节精读并提取最有价值部分；
+- 第一阶段只启动 `Finite difference-embedded UNet for solving transcranial ultrasound frequency-domain wavefield`；
+- Zotero 本地 PDF 已定位，共 13 页。
 
 ### 2026-07-15：建立 Git 基线和个人自主科研工作流
 

@@ -35,6 +35,7 @@ wandb/
 
 # Rendered QA / temporary extraction artifacts
 .docx_render_qa/
+tmp/pdfs/
 tmp_*.txt
 .tmp_*.txt
 zotero-paper-fulltext.txt

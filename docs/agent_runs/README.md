@@ -24,7 +24,7 @@ docs/agent_runs/<mission-id>/
 
 规则：
 
-- 子 Agent 只在本 mission 目录写中间结果；
+- 使用子 Agent 时，其结果只写入本 mission 目录；子 Agent 不是默认必选项；
 - 只有主 Agent 负责综合；
 - 未经用户验收，不把这里的结论升级为稳定共识；
 - 大型原文、数据、模型和运行缓存不要复制进本目录。

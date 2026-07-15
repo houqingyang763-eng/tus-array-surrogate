@@ -1,5 +1,7 @@
 # Agent C：项目迁移与反方审计
 
+> 历史试点文件，默认不再加载。当前入口：`paper1_guide.md`。
+
 论文：Linfeng Wang et al., *Finite difference-embedded UNet for solving transcranial ultrasound frequency-domain wavefield*, JASA 155(3), 2024, 2257-2269。
 
 审查角色：不重复做普通摘要；先重建论文真正完成的任务，再专门检查它能否迁移到当前 `tus-array-surrogate` 的 3D、大区域绝对 pmax、阵元位置 / 法向变化和单阵元复场叠加路线。

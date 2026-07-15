@@ -25,7 +25,7 @@ project_concept / memory / decisions / ideas / questions
 research_tasks.md 中 1-3 个用户批准的 Research Mission
         ↓
 执行与证据层
-主 Agent + 子 Agent + Worktree，产物进入 docs/agent_runs/
+主 Agent + 可选子 Agent + Worktree，产物进入 docs/agent_runs/
         ↓
 人工验收层
 用户学习、批注、批准后，再更新核心记忆
@@ -45,3 +45,5 @@ research_tasks.md 中 1-3 个用户批准的 Research Mission
 - 大型数据、外部仓库、模型权重和运行产物默认不进入 Git。
 
 个人研究阶段不强制使用 Issue 或 Pull Request。
+
+论文阅读默认不使用多 Agent：Codex 先给简洁导读，用户自己精读，再围绕具体问题讨论。

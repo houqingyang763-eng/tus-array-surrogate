@@ -1,5 +1,7 @@
 # R001 / Paper 1：数学、物理与网络技术精读
 
+> 历史试点文件，默认不再加载。当前入口：`paper1_guide.md`。
+
 论文：Linfeng Wang et al., *Finite difference-embedded UNet for solving transcranial ultrasound frequency-domain wavefield*, JASA 155(3), 2257-2269, 2024. DOI: 10.1121/10.0025391。
 
 阅读范围：PDF 全文 13 页，包括公式 (1)-(13)、图 1-12、表 I、附录和参考文献。以下页码使用期刊印刷页码；例如“p.2260”对应 PDF 第 4 页。

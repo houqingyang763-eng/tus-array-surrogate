@@ -1,5 +1,7 @@
 # R001 / Paper 1：逐节证据审计
 
+> 历史试点文件，默认不再加载。当前入口：`paper1_guide.md`。
+
 ## 0. 审计对象与覆盖声明
 
 - 论文：Linfeng Wang et al., *Finite difference-embedded UNet for solving transcranial ultrasound frequency-domain wavefield*, JASA 155(3), 2257-2269, 2024，DOI: 10.1121/10.0025391。

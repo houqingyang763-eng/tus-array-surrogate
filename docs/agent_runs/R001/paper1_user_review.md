@@ -1,5 +1,7 @@
 # Paper 1 用户批注模板
 
+> 历史试点文件，已取消使用；用户不需要填写。当前入口：`paper1_guide.md`。
+
 论文：`Finite difference-embedded UNet for solving transcranial ultrasound frequency-domain wavefield`
 
 使用方式：等 `paper1_synthesis.md` 完成后，在本文件逐项写批注。不要求重写论文；重点是纠正 Codex 的“重要性判断、迁移判断和遗漏”。

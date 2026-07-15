@@ -1,5 +1,7 @@
 # Paper 1 综合精读报告
 
+> 历史试点文件，内容过长且重复，默认不再加载。当前入口：`paper1_guide.md`。
+
 论文：Linfeng Wang et al., *Finite difference-embedded UNet for solving transcranial ultrasound frequency-domain wavefield*, JASA 155(3), 2257-2269, 2024。
 
 - DOI：<https://doi.org/10.1121/10.0025391>

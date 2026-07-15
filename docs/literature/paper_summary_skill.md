@@ -187,7 +187,7 @@ peak pressure / focal pressure
 - 是否需要 focal-region weighted loss；
 - 是否需要 peak pressure loss；
 - 是否需要 pmax field loss；
-- 是否需要局部 ROI loss，而不是全脑均匀 MSE。
+- 是否需要高压区 / 非目标风险区加权，而不是大区域均匀 MSE。
 
 ---
 
@@ -347,7 +347,7 @@ peak pressure / focal pressure
 我们的重点输出是：
 
 - peak pressure / focal pressure；
-- 全脑内 pmax field / 3D time-maximum pressure field。
+- 第一版低分辨率大区域绝对 pmax field，并评估 whole-brain 扩展边界。
 
 相位延迟不是当前主线，只作为可选扩展。
 

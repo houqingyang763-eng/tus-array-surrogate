@@ -9,7 +9,7 @@
 1. 前期论文阅读；
 2. 3D 技术路线判断；
 3. 阵列位置、阵列形状、阵元数量变化下的声场快速预测；
-4. whole-brain intracranial pmax field / 3D time-maximum pressure field；
+4. 第一版低分辨率大区域绝对 pmax field，并保留全脑覆盖需求作为长期评价边界；
 5. 单阵元全脑 / 大区域复声场响应预测 + 多阵元相干叠加；
 6. 初步验证实验；
 7. 后续组会材料。
@@ -22,13 +22,13 @@
 
 每次处理本项目任务前，优先读取：
 
-1. `docs/project_concept_v3.md`：当前项目源构想；
+1. `docs/project_concept_v4.md`：当前项目源构想；
 2. `docs/decisions.md`：已经沉淀的当前共识；
 3. `docs/questions.md`：待问师兄、待查论文、待验证问题；
 4. 科研记忆整理 / 归档任务再读取 `docs/memory.md`、`docs/memory_workflow.md`、`docs/ideas.md`；
 5. 论文任务再读取 `docs/literature/paper_summary_skill.md` 和 `docs/literature/paper_categories.md`。
 
-如果存在 `docs/project_concept_v3.md`，优先读取 v3 作为当前项目源构想。`project_concept_v2.md` 和 `project_concept_v1.md` 作为历史来源；必须注意 v1 中“不优先全脑输出”的判断已经被组内新需求修正，v2 中“长条形传播通道 / 焦点 ROI”相关候选已被 v3 修正。
+如果存在 `docs/project_concept_v4.md`，优先读取 v4。v1-v3 作为历史来源；必须注意 v4 已将第一版范围收缩为低分辨率大区域绝对 pmax，并固定 MIDA、频率、阵元尺寸和幅值，优先研究阵元位置 / 法向变化。
 
 ---
 
@@ -38,16 +38,16 @@
 
 当前目标面向 3D：
 
-输入：
+第一版输入：
 
-- 3D skull acoustic volume，例如声速 / 密度 / 衰减体数据；
-- bowl array geometry / element coordinates / element mask；
-- target focus position；
+- 固定 MIDA 头颅模型下的 3D skull acoustic volume；
+- 主要变化量：element position / element normal；
+- target focus position / target region（具体变化方式待确认）；
 - 可选：阵元法向、阵元尺寸、贴附距离、入射角、颅骨厚度、路径声速统计量。
 
-输出：
+第一版输出：
 
-- 主输出：whole-brain intracranial pmax field / 3D time-maximum pressure field；
+- 主输出：low-resolution large-region absolute pmax field；
 - 指标输出：P_target、P_peak、focus_error、side_lobe_ratio、脑内最大压力统计；
 - 候选扩展：single-element whole-brain / large-region complex response；
 - 候选扩展：phase / delay correction。
@@ -58,7 +58,7 @@
 
 1. 不要默认“整阵列黑箱网络”是唯一方案。
 2. 保留“单阵元全脑 / 大区域复声场预测 + 多阵元相干叠加”作为支持阵列位置、形状、阵元数量变化的核心候选路线。
-3. 组内新需求要求整个脑内声场，因此 whole-brain pmax field 必须作为主输出之一。
+3. 组内需要观察大范围脑内声场；第一版先做上半 / 一半颅骨或脑区的大区域输出，不再默认严格 whole-brain 全域。
 4. 只输出单阵元 Pmax 不适合相干叠加，因为会丢失相位 / 时间信息。
 5. 相干叠加依赖线性声学近似；涉及非线性传播、热效应或阵元硬件耦合时必须重新评估。
 6. 当前阶段优先判断路线可行性和风险，不急着追求大规模完整实现。
@@ -69,15 +69,16 @@
 ## 文档维护规则
 
 1. 修改项目构想时，新建版本文件，不要覆盖旧版本。
-2. `docs/memory.md` 是科研跟进主入口，记录完整时间线、当前状态、近期 3-5 个关注方向和已舍弃 / 已降级路线。
+2. `docs/memory.md` 是科研跟进主入口；当前状态和近期关注放在最上面，历史时间线按最新到最旧排列。
 3. 稳定结论写入 `docs/decisions.md`。
 4. 未验证但可能有价值的想法写入 `docs/ideas.md`。
 5. 未解决问题写入 `docs/questions.md`。
-6. `docs/research_tasks.md` 是历史保留文件，不再由 Codex 主动维护；不要主动往里面新增细粒度 task，除非用户明确要求。
+6. `docs/research_tasks.md` 是用户批准的自主研究任务合同，只保留 1-3 个活跃 mission；不得自动生成细粒度 todo。
 7. 日常科研笔记先按 `docs/memory_workflow.md` 分类并反问确认，再写入文件。
-8. 当前简化阶段暂不主动建立 `docs/literature/summaries/`、`docs/experiments/`、`docs/meeting/`，除非用户明确要求。
+8. 自主任务的中间产物先写入 `docs/agent_runs/<mission-id>/`；子 Agent 不直接修改核心记忆文件。
 9. 不要把聊天流水账写进核心文档，只写稳定共识、可追踪想法、待解决问题、时间线摘要和近期关注。
 10. 修改文件后必须输出修改摘要，并指出需要人工确认的风险点。
+11. 进度型 Markdown 默认“最新在上”；稳定参考文档按概念结构组织，不强行倒序。
 
 ---
 
@@ -96,7 +97,7 @@
 - 是否支持 3D；
 - 是否支持阵列位置变化；
 - 是否支持阵列形状变化；
-- 是否支持 whole-brain pmax field；
+- 是否支持大区域 / whole-brain pmax field，是否保留绝对声压；
 - 是否适合“单阵元全脑 / 大区域响应预测 + 叠加”；
 - 适合放进组会 PPT 哪一页。
 
@@ -112,7 +113,7 @@
 
 1. 单源复场是否能叠加成多源场；
 2. Pmax 输出为何不能直接相干叠加；
-3. whole-brain low-resolution pmax baseline 的显存和数据量压力；
+3. low-resolution large-region absolute pmax baseline 的显存和数据量压力；
 4. 单阵元全脑 / 大区域响应路线和整阵列黑箱路线的泛化差异；
 5. normalized pmax 与绝对声压 / scalar metrics 的差异。
 

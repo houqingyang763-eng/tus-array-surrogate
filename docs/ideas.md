@@ -32,6 +32,7 @@
 待验证点：
 
 当前状态：待验证
+```
 
 ## 2026-07-04：低分辨率大区域 pmax baseline 作为第一版
 
@@ -81,7 +82,7 @@ DeepTFUS 适合作为 3D pmax surrogate 的工程参考和 baseline：可以借�
 - 代码笔记：`docs/deeptfus_code_notes.md` 记录 DeepTFUS 的标签为 `pressure = log(1 + pmap_resized / max(pmap_resized))`，不是绝对 Pa，也不是复声场。
 - 运行记录：`docs/deeptfus_run_log.md` 记录非官方 base checkpoint 能在 CUDA 环境下完成 subset eval，训练链路也能低分辨率跑通。
 - 非官方仓库 README / checkpoint README：base reproduction 自报在 `relative_l2` 上接近论文，但 `focal_position_error_mm` 明显差于论文；其硬件目标为 H100/A100 80GB。
-- 项目文档：`docs/project_concept_v3.md` 保留大区域 pmax 与单阵元大区域复声场两条候选路线。
+- 项目文档：`docs/project_concept_v4.md` 保留大区域绝对 pmax 与单阵元大区域复声场两条候选路线。
 
 可能价值：
 
@@ -109,7 +110,7 @@ DeepTFUS 适合作为 3D pmax surrogate 的工程参考和 baseline：可以借�
 
 依据：
 
-- 项目文档：`docs/project_concept_v3.md` 已保留 single-element large-region complex response field 路线。
+- 项目文档：`docs/project_concept_v4.md` 已保留 single-element large-region complex response field 路线。
 - 代码笔记：`docs/deeptfus_code_notes.md` 明确 DeepTFUS 只输出 normalized pmax，不含相位，不能直接用于相干叠加。
 - 用户确认：第一阶段固定频率、阵元尺寸、幅值，优先研究位置 / 法向变化；长期仍需支持阵列设计变化。
 
@@ -145,7 +146,7 @@ DeepTFUS 中把换能器表面表示为 `N × 3` 坐标矩阵，再通过 Fourie
 - 论文/网页：Srivastav et al., `A Skull-Adaptive Framework for AI-Based 3D Transcranial Focused Ultrasound Simulation`, arXiv:2505.12998；官方仓库 https://github.com/CAMMA-public/TFUScapes 说明 DeepTFUS 从 3D CT volume 和 transducer position 估计 normalized pressure fields，并采用 Fourier-encoded position embeddings、MLP、feature-wise modulation、dynamic convolutions 和 cross-attention。
 - 论文实验：weighted loss 将 focal position error 从约 `5.49 mm` 降到 `3.04 mm`，max pressure error 从约 `92.39%` 降到 `22.74%`，但 global relative L2 没有同步改善。
 - 论文消融：去掉 Fourier positional encoding 影响有限，说明该编码是候选启发，不是强确定结论。
-- 项目文档：`docs/project_concept_v2.md` 已将 array geometry encoding 和 pmax loss 设计列为需要重点查证的问题。
+- 项目文档：`docs/project_concept_v4.md` 将 geometry encoding、绝对 pmax label / loss 和指标设计列为当前问题。
 
 可能价值：
 
@@ -161,7 +162,6 @@ DeepTFUS 中把换能器表面表示为 `N × 3` 坐标矩阵，再通过 Fourie
 4. 对本项目是否需要同时加入焦点加权、非目标高压区加权和梯度一致性 loss。
 
 当前状态：待验证
-```
 
 ## 2026-07-01：用 400^3 单通道体数据作为全脑输入估算基准
 
@@ -194,7 +194,7 @@ DeepTFUS 中把换能器表面表示为 `N × 3` 坐标矩阵，再通过 Fourie
 依据：
 
 - 用户本轮确认：输入拟用 `400×400×400` 体素、`0.5 mm` 间距、`1 channel` 信息；换能器位置也是输入，但不怎么占用数据空间。
-- 项目文档：`docs/project_concept_v2.md` 将 `3D skull acoustic volume`、阵列 / 阵元位置和法向列为候选输入。
+- 项目文档：`docs/project_concept_v4.md` 将 `3D skull acoustic volume`、阵元位置和法向列为第一版候选输入。
 - GitHub/代码：DeepTFUS / TFUScapes 公开样本采用单通道 `ct` 输入和 `tr_coords` 换能器点坐标，来源：https://github.com/CAMMA-public/TFUScapes
 - 计算推导：`400 × 0.5 mm = 200 mm`，约对应 `200 mm × 200 mm × 200 mm` 覆盖范围；`400^3 = 64,000,000` 体素。
 

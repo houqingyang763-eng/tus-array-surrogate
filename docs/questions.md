@@ -6,7 +6,7 @@
 
 注意：已被舍弃或降级的旧路线不再放在这里作为活跃问题；历史变化见 `docs/memory.md`。
 
-## 2026-07-01：400^3 单通道输入基准的边界条件
+## 2026-07-04：大区域输入输出边界（由 2026-07-01 问题更新）
 
 问题：
 
@@ -21,7 +21,7 @@
 
 - 用户确认：输入拟用 `400×400×400` 体素、`0.5 mm` 间距、`1 channel` 信息，并将换能器位置作为输入。
 - 用户 2026-07-04 确认：不是严格全脑，而是大区域，差不多切一半；第一版先做低分辨率。
-- 项目文档：`docs/project_concept_v3.md` 当前推荐围绕 whole-brain / 大区域输入输出设计；该条已被用户进一步修正为第一版优先大区域。
+- 项目文档：`docs/project_concept_v4.md` 已将第一版明确为低分辨率大区域绝对 pmax 输出。
 - GitHub/代码：DeepTFUS / TFUScapes 公开样本采用单通道 `ct` 和 `tr_coords`，但它是 `256^3 crop`，不能直接证明 `400^3` 全脑输入一定合理，来源：https://github.com/CAMMA-public/TFUScapes
 
 当前状态：待查 / 待验证
@@ -43,7 +43,7 @@ DeepTFUS 只有 `125` 个 subject、每个 subject `20` 个 transducer placement
 - 论文：DeepTFUS / TFUScapes 报告 2500 个仿真、超过 750 GPU hours、超过 200 GB 数据。
 - 用户确认：本项目阵元更小，需要考虑的空间位置肯定不止 20 个，可能超过 1000 个位置。
 - 用户 2026-07-04 确认：第一阶段固定频率、阵元尺寸、幅值，只研究位置 / 法向变化。
-- 项目文档：`docs/project_concept_v3.md` 保留单阵元复声场叠加路线，但输入和输出应面向全脑或大区域。
+- 项目文档：`docs/project_concept_v4.md` 保留单阵元大区域复声场叠加路线。
 
 当前状态：待查 / 待验证
 
@@ -65,7 +65,7 @@ DeepTFUS 预测的是 normalized peak pressure amplitude / normalized pmax field
 - 论文：DeepTFUS 将输出定义为 normalized peak pressure amplitude pmax，并在训练中对 pressure map 做 max normalization 和 `log(1+x)`。
 - 讨论结论：DeepTFUS 输出不是绝对声压、不是时间声压，也不是复声场。
 - 用户 2026-07-04 确认：pmax 输出必须保留绝对声压标定。
-- 项目文档：`docs/project_concept_v3.md` 将 whole-brain / 大区域 pmax field 和 `P_target`、`P_peak`、`focus_error`、`side_lobe_ratio` 均列为重要输出。
+- 项目文档：`docs/project_concept_v4.md` 将大区域绝对 pmax field 和 `P_target`、`P_peak`、`focus_error`、`side_lobe_ratio` 列为第一版输出。
 
 当前状态：待查 / 待验证
 
@@ -86,6 +86,6 @@ DeepTFUS / TFUScapes 只在 `500 kHz` 下训练和验证。若本项目需要比
 - 论文：DeepTFUS / TFUScapes 采用固定 `500 kHz` continuous-wave source。
 - 用户总结：单频率受限，大模型不能做到非常广泛的适用。
 - 用户 2026-07-04 确认：第一阶段固定频率、阵元尺寸、幅值，只研究位置 / 法向变化。
-- 项目文档：`docs/project_concept_v3.md` 将阵列几何变化、whole-brain pmax 和单阵元大区域复声场路线作为候选主线，但频率是否进入输入仍未确定。
+- 项目文档：`docs/project_concept_v4.md` 固定第一版频率、阵元尺寸和幅值，后续是否扩展仍待验证。
 
 当前状态：待查 / 待验证

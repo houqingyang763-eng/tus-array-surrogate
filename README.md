@@ -9,11 +9,12 @@
 用 Codex 打开本目录后，优先读取：
 
 1. `AGENTS.md`：项目规则与边界；
-2. `docs/project_concept_v4.md`：当前项目源构想；
-3. `docs/memory.md`：最新状态、近期关注和时间线；
-4. `docs/decisions.md`：稳定共识；
-5. `docs/questions.md`：开放问题；
-6. `docs/research_tasks.md`：已获用户批准的自主研究 mission。
+2. `docs/project_design_handoff_v1.md`：2026-07-26 面向 Codex 的阶段性项目设计快照；
+3. `docs/project_concept_v7.md`：当前项目源构想；
+4. `docs/memory.md`：最新状态、近期关注和时间线；
+5. `docs/decisions.md`：稳定共识；
+6. `docs/questions.md`：开放问题；
+7. `docs/research_tasks.md`：已获用户批准的自主研究 mission。
 
 ## 四层工作流
 
@@ -33,9 +34,9 @@ research_tasks.md 中 1-3 个用户批准的 Research Mission
 
 ## 当前技术主线
 
-第一版固定 MIDA、频率、阵元尺寸和幅值，优先研究阵元位置 / 法向变化，输出低分辨率大区域绝对 pmax field 与关键指标。
+第一阶段固定 MIDA、频率和激励幅值，网络介质输入固定为单通道三维声速场，优先研究理想方向性点源的位置 / 法向变化。target focus 不进入单源网络，只用于下游相位 / 延迟、阵列组合和评价。主 U-Net 预测逐样本归一化的相对复声场 `q_Re/q_Im`，A4 预测脑内绝对峰值尺度，二者共同重建指定三维域内的单阵元绝对复声场。
 
-长期保留“单阵元大区域复声场预测 + 多阵元相干叠加”路线，用于支持阵元数量、阵列形状和相位策略变化。
+当前核心路线是“相对复场预测 + 独立绝对尺度预测 + 单阵元绝对复场重建 + 网络外多阵元相干叠加”。三维离散 Helmholtz 残差仍是全场预测的核心物理约束候选，但训练时必须先把相对预测恢复到绝对量纲。
 
 ## Git 使用方式
 

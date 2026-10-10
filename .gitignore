@@ -1,51 +1,14 @@
-# Python / local environments
 __pycache__/
 *.py[cod]
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-.venv/
-venv/
-env/
-
-# External repositories and large generated assets
-external/
+.env
+.env.*
 data/
 runs/
 checkpoints/
-outputs/
-wandb/
-
-# Deep learning checkpoints and large arrays
 *.pt
 *.pth
 *.ckpt
-*.npz
-*.npy
 *.h5
 *.hdf5
-*.zarr/
-
-# Medical / simulation volume data
-*.nii
-*.nii.gz
-*.mha
-*.mhd
-*.mat
-experiments/elementwise_superposition/config/mida_config.json
-experiments/feunet_repro_audit/artifact/
-experiments/feunet_repro_audit/unpacked/
-
-# Rendered QA / temporary extraction artifacts
-.docx_render_qa/
-tmp/pdfs/
-tmp_*.txt
-.tmp_*.txt
-zotero-paper-fulltext.txt
-
-# OS / editor noise
-.DS_Store
-Thumbs.db
-desktop.ini
-.vscode/
-.idea/
+*.npy
+*.npz

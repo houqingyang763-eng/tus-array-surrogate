@@ -1,0 +1,848 @@
+{
+  "status": "ANALYTIC_ONLY",
+  "dimensions": {
+    "ROI": [
+      352,
+      352,
+      192
+    ],
+    "ROI_voxels": 23789568,
+    "valid_mask_voxels": 5101889,
+    "full_simulation_voxels": 41287680,
+    "voxel_counts_by_spacing_mm": {
+      "0.5": 23789568,
+      "1.0": 2973696,
+      "2.0": 371712,
+      "4.0": 46464
+    }
+  },
+  "conventions": {
+    "MAC": "one real multiply-accumulate; 2 FLOP",
+    "memory": "single tensor; excludes liveness, workspace, allocator",
+    "timing": "No measured V100 time, bandwidth or DDP time",
+    "resource": "per sample/per GPU; global batch5 on five GPUs"
+  },
+  "input_evidence": {
+    "media_channels": 1,
+    "P0_real_channels": 2,
+    "source": "MISSION-linked T512-V9BASE RESULTS.md ROI hook, line 203",
+    "scope": "Recorded baseline interface, not a fresh model run"
+  },
+  "tensors": [
+    {
+      "name": "ROI complex field FP32",
+      "elements": 47579136,
+      "bytes": 190316544,
+      "MiB": 181.5,
+      "GiB": 0.17724609375,
+      "note": "Two real components"
+    },
+    {
+      "name": "ROI 8 real channels FP16",
+      "elements": 190316544,
+      "bytes": 380633088,
+      "MiB": 363.0,
+      "GiB": 0.3544921875,
+      "note": "One tensor only"
+    },
+    {
+      "name": "ROI 16 real channels FP16",
+      "elements": 380633088,
+      "bytes": 761266176,
+      "MiB": 726.0,
+      "GiB": 0.708984375,
+      "note": "One tensor only"
+    },
+    {
+      "name": "ROI 16 real channels FP32",
+      "elements": 380633088,
+      "bytes": 1522532352,
+      "MiB": 1452.0,
+      "GiB": 1.41796875,
+      "note": "One tensor only"
+    },
+    {
+      "name": "1mm 16 real channels FP16",
+      "elements": 47579136,
+      "bytes": 95158272,
+      "MiB": 90.75,
+      "GiB": 0.088623046875,
+      "note": "8 complex channels; exact packing of one fine complex field"
+    },
+    {
+      "name": "2mm 48 real channels FP16",
+      "elements": 17842176,
+      "bytes": 35684352,
+      "MiB": 34.03125,
+      "GiB": 0.033233642578125,
+      "note": "24 complex"
+    },
+    {
+      "name": "2mm 64 real channels FP16",
+      "elements": 23789568,
+      "bytes": 47579136,
+      "MiB": 45.375,
+      "GiB": 0.0443115234375,
+      "note": "32 complex"
+    },
+    {
+      "name": "Full 8-carrier bank complex FP32",
+      "elements": 380633088,
+      "bytes": 1522532352,
+      "MiB": 1452.0,
+      "GiB": 1.41796875,
+      "note": "Avoid materializing; includes no intermediate activations"
+    },
+    {
+      "name": "2mm SSM Ccomplex=16 S=4 one direction FP32",
+      "elements": 47579136,
+      "bytes": 190316544,
+      "MiB": 181.5,
+      "GiB": 0.17724609375,
+      "note": "Complex states, one direction; six separate directions multiply by six"
+    },
+    {
+      "name": "ROI dense basis rank32 complex FP32",
+      "elements": 1522532352,
+      "bytes": 6090129408,
+      "MiB": 5808.0,
+      "GiB": 5.671875,
+      "note": "Basis storage only, no gradients/optimizer"
+    },
+    {
+      "name": "Mask dense basis rank32 complex FP32",
+      "elements": 326520896,
+      "bytes": 1306083584,
+      "MiB": 1245.578369140625,
+      "GiB": 1.2163851261138916,
+      "note": "Diagnostic mask only; not full output implementation"
+    },
+    {
+      "name": "ROI trainable rank32 basis FP32 Adam lower bookkeeping",
+      "elements": 1522532352,
+      "bytes": 24360517632,
+      "MiB": 23232.0,
+      "GiB": 22.6875,
+      "note": "Weights+gradient+two moments; no activation/master copy"
+    },
+    {
+      "name": "ROI attention scores 4096 tokens FP16",
+      "elements": 97442070528,
+      "bytes": 194884141056,
+      "MiB": 185856.0,
+      "GiB": 181.5,
+      "note": "One head dense scores; excludes Q/K/V"
+    },
+    {
+      "name": "Mask attention scores 4096 tokens FP16",
+      "elements": 20897337344,
+      "bytes": 41794674688,
+      "MiB": 39858.5078125,
+      "GiB": 38.92432403564453,
+      "note": "One head; mask output is not the default full ROI contract"
+    },
+    {
+      "name": "Dense spectral weights 64x64 channels 64^3 complex FP32",
+      "elements": 2147483648,
+      "bytes": 8589934592,
+      "MiB": 8192.0,
+      "GiB": 8.0,
+      "note": "One stored block only; implementation may require multiple sign blocks"
+    }
+  ],
+  "operations": [
+    {
+      "name": "ROI dense 8 to 8",
+      "voxels": 23789568,
+      "real_cin": 8,
+      "real_cout": 8,
+      "kernel": 3,
+      "depthwise_plus_pointwise": false,
+      "MAC": 41108373504,
+      "GMAC": 41.108373504,
+      "forward_FLOP": 82216747008
+    },
+    {
+      "name": "ROI dense 16 to 16",
+      "voxels": 23789568,
+      "real_cin": 16,
+      "real_cout": 16,
+      "kernel": 3,
+      "depthwise_plus_pointwise": false,
+      "MAC": 164433494016,
+      "GMAC": 164.433494016,
+      "forward_FLOP": 328866988032
+    },
+    {
+      "name": "ROI dense 32 to 32",
+      "voxels": 23789568,
+      "real_cin": 32,
+      "real_cout": 32,
+      "kernel": 3,
+      "depthwise_plus_pointwise": false,
+      "MAC": 657733976064,
+      "GMAC": 657.733976064,
+      "forward_FLOP": 1315467952128
+    },
+    {
+      "name": "ROI depthwise3 plus pointwise 16 to 16",
+      "voxels": 23789568,
+      "real_cin": 16,
+      "real_cout": 16,
+      "kernel": 3,
+      "depthwise_plus_pointwise": true,
+      "MAC": 16367222784,
+      "GMAC": 16.367222784,
+      "forward_FLOP": 32734445568
+    },
+    {
+      "name": "2mm dense 64 to 64",
+      "voxels": 371712,
+      "real_cin": 64,
+      "real_cout": 64,
+      "kernel": 3,
+      "depthwise_plus_pointwise": false,
+      "MAC": 41108373504,
+      "GMAC": 41.108373504,
+      "forward_FLOP": 82216747008
+    }
+  ],
+  "baseline_backbone": {
+    "real_channels": [
+      8,
+      16,
+      32,
+      64,
+      128,
+      128
+    ],
+    "input_channels": 3,
+    "rows": [
+      {
+        "name": "V9BASE encoder 0 first",
+        "voxels": 23789568,
+        "real_cin": 3,
+        "real_cout": 8,
+        "kernel": 3,
+        "depthwise_plus_pointwise": false,
+        "MAC": 15415640064,
+        "GMAC": 15.415640064,
+        "forward_FLOP": 30831280128
+      },
+      {
+        "name": "V9BASE encoder 0 second",
+        "voxels": 23789568,
+        "real_cin": 8,
+        "real_cout": 8,
+        "kernel": 3,
+        "depthwise_plus_pointwise": false,
+        "MAC": 41108373504,
+        "GMAC": 41.108373504,
+        "forward_FLOP": 82216747008
+      },
+      {
+        "name": "V9BASE encoder 1 first",
+        "voxels": 2973696,
+        "real_cin": 8,
+        "real_cout": 16,
+        "kernel": 3,
+        "depthwise_plus_pointwise": false,
+        "MAC": 10277093376,
+        "GMAC": 10.277093376,
+        "forward_FLOP": 20554186752
+      },
+      {
+        "name": "V9BASE encoder 1 second",
+        "voxels": 2973696,
+        "real_cin": 16,
+        "real_cout": 16,
+        "kernel": 3,
+        "depthwise_plus_pointwise": false,
+        "MAC": 20554186752,
+        "GMAC": 20.554186752,
+        "forward_FLOP": 41108373504
+      },
+      {
+        "name": "V9BASE encoder 2 first",
+        "voxels": 371712,
+        "real_cin": 16,
+        "real_cout": 32,
+        "kernel": 3,
+        "depthwise_plus_pointwise": false,
+        "MAC": 5138546688,
+        "GMAC": 5.138546688,
+        "forward_FLOP": 10277093376
+      },
+      {
+        "name": "V9BASE encoder 2 second",
+        "voxels": 371712,
+        "real_cin": 32,
+        "real_cout": 32,
+        "kernel": 3,
+        "depthwise_plus_pointwise": false,
+        "MAC": 10277093376,
+        "GMAC": 10.277093376,
+        "forward_FLOP": 20554186752
+      },
+      {
+        "name": "V9BASE encoder 3 first",
+        "voxels": 46464,
+        "real_cin": 32,
+        "real_cout": 64,
+        "kernel": 3,
+        "depthwise_plus_pointwise": false,
+        "MAC": 2569273344,
+        "GMAC": 2.569273344,
+        "forward_FLOP": 5138546688
+      },
+      {
+        "name": "V9BASE encoder 3 second",
+        "voxels": 46464,
+        "real_cin": 64,
+        "real_cout": 64,
+        "kernel": 3,
+        "depthwise_plus_pointwise": false,
+        "MAC": 5138546688,
+        "GMAC": 5.138546688,
+        "forward_FLOP": 10277093376
+      },
+      {
+        "name": "V9BASE encoder 4 first",
+        "voxels": 5808,
+        "real_cin": 64,
+        "real_cout": 128,
+        "kernel": 3,
+        "depthwise_plus_pointwise": false,
+        "MAC": 1284636672,
+        "GMAC": 1.284636672,
+        "forward_FLOP": 2569273344
+      },
+      {
+        "name": "V9BASE encoder 4 second",
+        "voxels": 5808,
+        "real_cin": 128,
+        "real_cout": 128,
+        "kernel": 3,
+        "depthwise_plus_pointwise": false,
+        "MAC": 2569273344,
+        "GMAC": 2.569273344,
+        "forward_FLOP": 5138546688
+      },
+      {
+        "name": "V9BASE encoder 5 first",
+        "voxels": 726,
+        "real_cin": 128,
+        "real_cout": 128,
+        "kernel": 3,
+        "depthwise_plus_pointwise": false,
+        "MAC": 321159168,
+        "GMAC": 0.321159168,
+        "forward_FLOP": 642318336
+      },
+      {
+        "name": "V9BASE encoder 5 second",
+        "voxels": 726,
+        "real_cin": 128,
+        "real_cout": 128,
+        "kernel": 3,
+        "depthwise_plus_pointwise": false,
+        "MAC": 321159168,
+        "GMAC": 0.321159168,
+        "forward_FLOP": 642318336
+      },
+      {
+        "name": "V9BASE upconv 4",
+        "voxels": 726,
+        "real_cin": 128,
+        "real_cout": 128,
+        "kernel": 2,
+        "depthwise_plus_pointwise": false,
+        "MAC": 95158272,
+        "GMAC": 0.095158272,
+        "forward_FLOP": 190316544
+      },
+      {
+        "name": "V9BASE decoder 4 first",
+        "voxels": 5808,
+        "real_cin": 256,
+        "real_cout": 128,
+        "kernel": 3,
+        "depthwise_plus_pointwise": false,
+        "MAC": 5138546688,
+        "GMAC": 5.138546688,
+        "forward_FLOP": 10277093376
+      },
+      {
+        "name": "V9BASE decoder 4 second",
+        "voxels": 5808,
+        "real_cin": 128,
+        "real_cout": 128,
+        "kernel": 3,
+        "depthwise_plus_pointwise": false,
+        "MAC": 2569273344,
+        "GMAC": 2.569273344,
+        "forward_FLOP": 5138546688
+      },
+      {
+        "name": "V9BASE upconv 3",
+        "voxels": 5808,
+        "real_cin": 128,
+        "real_cout": 64,
+        "kernel": 2,
+        "depthwise_plus_pointwise": false,
+        "MAC": 380633088,
+        "GMAC": 0.380633088,
+        "forward_FLOP": 761266176
+      },
+      {
+        "name": "V9BASE decoder 3 first",
+        "voxels": 46464,
+        "real_cin": 128,
+        "real_cout": 64,
+        "kernel": 3,
+        "depthwise_plus_pointwise": false,
+        "MAC": 10277093376,
+        "GMAC": 10.277093376,
+        "forward_FLOP": 20554186752
+      },
+      {
+        "name": "V9BASE decoder 3 second",
+        "voxels": 46464,
+        "real_cin": 64,
+        "real_cout": 64,
+        "kernel": 3,
+        "depthwise_plus_pointwise": false,
+        "MAC": 5138546688,
+        "GMAC": 5.138546688,
+        "forward_FLOP": 10277093376
+      },
+      {
+        "name": "V9BASE upconv 2",
+        "voxels": 46464,
+        "real_cin": 64,
+        "real_cout": 32,
+        "kernel": 2,
+        "depthwise_plus_pointwise": false,
+        "MAC": 761266176,
+        "GMAC": 0.761266176,
+        "forward_FLOP": 1522532352
+      },
+      {
+        "name": "V9BASE decoder 2 first",
+        "voxels": 371712,
+        "real_cin": 64,
+        "real_cout": 32,
+        "kernel": 3,
+        "depthwise_plus_pointwise": false,
+        "MAC": 20554186752,
+        "GMAC": 20.554186752,
+        "forward_FLOP": 41108373504
+      },
+      {
+        "name": "V9BASE decoder 2 second",
+        "voxels": 371712,
+        "real_cin": 32,
+        "real_cout": 32,
+        "kernel": 3,
+        "depthwise_plus_pointwise": false,
+        "MAC": 10277093376,
+        "GMAC": 10.277093376,
+        "forward_FLOP": 20554186752
+      },
+      {
+        "name": "V9BASE upconv 1",
+        "voxels": 371712,
+        "real_cin": 32,
+        "real_cout": 16,
+        "kernel": 2,
+        "depthwise_plus_pointwise": false,
+        "MAC": 1522532352,
+        "GMAC": 1.522532352,
+        "forward_FLOP": 3045064704
+      },
+      {
+        "name": "V9BASE decoder 1 first",
+        "voxels": 2973696,
+        "real_cin": 32,
+        "real_cout": 16,
+        "kernel": 3,
+        "depthwise_plus_pointwise": false,
+        "MAC": 41108373504,
+        "GMAC": 41.108373504,
+        "forward_FLOP": 82216747008
+      },
+      {
+        "name": "V9BASE decoder 1 second",
+        "voxels": 2973696,
+        "real_cin": 16,
+        "real_cout": 16,
+        "kernel": 3,
+        "depthwise_plus_pointwise": false,
+        "MAC": 20554186752,
+        "GMAC": 20.554186752,
+        "forward_FLOP": 41108373504
+      },
+      {
+        "name": "V9BASE upconv 0",
+        "voxels": 2973696,
+        "real_cin": 16,
+        "real_cout": 8,
+        "kernel": 2,
+        "depthwise_plus_pointwise": false,
+        "MAC": 3045064704,
+        "GMAC": 3.045064704,
+        "forward_FLOP": 6090129408
+      },
+      {
+        "name": "V9BASE decoder 0 first",
+        "voxels": 23789568,
+        "real_cin": 16,
+        "real_cout": 8,
+        "kernel": 3,
+        "depthwise_plus_pointwise": false,
+        "MAC": 82216747008,
+        "GMAC": 82.216747008,
+        "forward_FLOP": 164433494016
+      },
+      {
+        "name": "V9BASE decoder 0 second",
+        "voxels": 23789568,
+        "real_cin": 8,
+        "real_cout": 8,
+        "kernel": 3,
+        "depthwise_plus_pointwise": false,
+        "MAC": 41108373504,
+        "GMAC": 41.108373504,
+        "forward_FLOP": 82216747008
+      },
+      {
+        "name": "V9BASE output head",
+        "voxels": 23789568,
+        "real_cin": 8,
+        "real_cout": 2,
+        "kernel": 1,
+        "depthwise_plus_pointwise": false,
+        "MAC": 380633088,
+        "GMAC": 0.380633088,
+        "forward_FLOP": 761266176
+      }
+    ],
+    "forward_GMAC": 360.102690816,
+    "excluded": [
+      "conditioning/fusion/Fourier-FiLM",
+      "norm/activation/pooling/data movement",
+      "backward/DDP/optimizer"
+    ],
+    "note": "Analytic conventional backbone only; not total baseline timing"
+  },
+  "candidate_M0_core": {
+    "real_channels": [
+      8,
+      16,
+      48,
+      96
+    ],
+    "shared_updates": 2,
+    "rows": [
+      {
+        "name": "fine local encoder/decode block 1",
+        "voxels": 23789568,
+        "real_cin": 8,
+        "real_cout": 8,
+        "kernel": 3,
+        "depthwise_plus_pointwise": true,
+        "MAC": 6661079040,
+        "GMAC": 6.66107904,
+        "forward_FLOP": 13322158080,
+        "count": 1,
+        "total_GMAC": 6.66107904
+      },
+      {
+        "name": "fine local encoder/decode block 2",
+        "voxels": 23789568,
+        "real_cin": 8,
+        "real_cout": 8,
+        "kernel": 3,
+        "depthwise_plus_pointwise": true,
+        "MAC": 6661079040,
+        "GMAC": 6.66107904,
+        "forward_FLOP": 13322158080,
+        "count": 1,
+        "total_GMAC": 6.66107904
+      },
+      {
+        "name": "1mm field/mixing block",
+        "voxels": 2973696,
+        "real_cin": 16,
+        "real_cout": 16,
+        "kernel": 3,
+        "depthwise_plus_pointwise": true,
+        "MAC": 2045902848,
+        "GMAC": 2.045902848,
+        "forward_FLOP": 4091805696,
+        "count": 6,
+        "total_GMAC": 12.275417088
+      },
+      {
+        "name": "2mm field/mixing block",
+        "voxels": 371712,
+        "real_cin": 48,
+        "real_cout": 48,
+        "kernel": 3,
+        "depthwise_plus_pointwise": true,
+        "MAC": 1338163200,
+        "GMAC": 1.3381632,
+        "forward_FLOP": 2676326400,
+        "count": 6,
+        "total_GMAC": 8.0289792
+      },
+      {
+        "name": "4mm field/mixing block",
+        "voxels": 46464,
+        "real_cin": 96,
+        "real_cout": 96,
+        "kernel": 3,
+        "depthwise_plus_pointwise": true,
+        "MAC": 548646912,
+        "GMAC": 0.548646912,
+        "forward_FLOP": 1097293824,
+        "count": 6,
+        "total_GMAC": 3.291881472
+      },
+      {
+        "name": "1mm latent A pointwise",
+        "voxels": 2973696,
+        "real_cin": 16,
+        "real_cout": 16,
+        "kernel": 1,
+        "depthwise_plus_pointwise": false,
+        "MAC": 761266176,
+        "GMAC": 0.761266176,
+        "forward_FLOP": 1522532352,
+        "count": 6,
+        "total_GMAC": 4.567597056
+      },
+      {
+        "name": "2mm latent A pointwise",
+        "voxels": 371712,
+        "real_cin": 48,
+        "real_cout": 48,
+        "kernel": 1,
+        "depthwise_plus_pointwise": false,
+        "MAC": 856424448,
+        "GMAC": 0.856424448,
+        "forward_FLOP": 1712848896,
+        "count": 6,
+        "total_GMAC": 5.138546688
+      },
+      {
+        "name": "4mm latent A pointwise",
+        "voxels": 46464,
+        "real_cin": 96,
+        "real_cout": 96,
+        "kernel": 1,
+        "depthwise_plus_pointwise": false,
+        "MAC": 428212224,
+        "GMAC": 0.428212224,
+        "forward_FLOP": 856424448,
+        "count": 6,
+        "total_GMAC": 2.569273344
+      },
+      {
+        "name": "packed restriction 1mm to 2mm",
+        "voxels": 371712,
+        "real_cin": 128,
+        "real_cout": 48,
+        "kernel": 1,
+        "depthwise_plus_pointwise": false,
+        "MAC": 2283798528,
+        "GMAC": 2.283798528,
+        "forward_FLOP": 4567597056,
+        "count": 3,
+        "total_GMAC": 6.8513955840000005
+      },
+      {
+        "name": "packed restriction 2mm to 4mm",
+        "voxels": 46464,
+        "real_cin": 384,
+        "real_cout": 96,
+        "kernel": 1,
+        "depthwise_plus_pointwise": false,
+        "MAC": 1712848896,
+        "GMAC": 1.712848896,
+        "forward_FLOP": 3425697792,
+        "count": 3,
+        "total_GMAC": 5.138546688
+      },
+      {
+        "name": "prolongation 4mm to packed2mm",
+        "voxels": 46464,
+        "real_cin": 96,
+        "real_cout": 384,
+        "kernel": 1,
+        "depthwise_plus_pointwise": false,
+        "MAC": 1712848896,
+        "GMAC": 1.712848896,
+        "forward_FLOP": 3425697792,
+        "count": 3,
+        "total_GMAC": 5.138546688
+      },
+      {
+        "name": "prolongation 2mm to packed1mm",
+        "voxels": 371712,
+        "real_cin": 48,
+        "real_cout": 128,
+        "kernel": 1,
+        "depthwise_plus_pointwise": false,
+        "MAC": 2283798528,
+        "GMAC": 2.283798528,
+        "forward_FLOP": 4567597056,
+        "count": 3,
+        "total_GMAC": 6.8513955840000005
+      },
+      {
+        "name": "1mm decoder to packed complex residual",
+        "voxels": 2973696,
+        "real_cin": 16,
+        "real_cout": 16,
+        "kernel": 1,
+        "depthwise_plus_pointwise": false,
+        "MAC": 761266176,
+        "GMAC": 0.761266176,
+        "forward_FLOP": 1522532352,
+        "count": 1,
+        "total_GMAC": 0.761266176
+      },
+      {
+        "name": "fine output 8 to 2",
+        "voxels": 23789568,
+        "real_cin": 8,
+        "real_cout": 2,
+        "kernel": 1,
+        "depthwise_plus_pointwise": false,
+        "MAC": 380633088,
+        "GMAC": 0.380633088,
+        "forward_FLOP": 761266176,
+        "count": 1,
+        "total_GMAC": 0.380633088
+      },
+      {
+        "name": "1mm source lift: packedP0+media8+geometry4",
+        "voxels": 2973696,
+        "real_cin": 28,
+        "real_cout": 16,
+        "kernel": 1,
+        "depthwise_plus_pointwise": false,
+        "MAC": 1332215808,
+        "GMAC": 1.332215808,
+        "forward_FLOP": 2664431616,
+        "count": 1,
+        "total_GMAC": 1.332215808
+      },
+      {
+        "name": "fine decode fusion: field2+media8+geometry4",
+        "voxels": 23789568,
+        "real_cin": 14,
+        "real_cout": 8,
+        "kernel": 1,
+        "depthwise_plus_pointwise": false,
+        "MAC": 2664431616,
+        "GMAC": 2.664431616,
+        "forward_FLOP": 5328863232,
+        "count": 1,
+        "total_GMAC": 2.664431616
+      },
+      {
+        "name": "fine reference projection 2 to 2",
+        "voxels": 23789568,
+        "real_cin": 2,
+        "real_cout": 2,
+        "kernel": 1,
+        "depthwise_plus_pointwise": false,
+        "MAC": 95158272,
+        "GMAC": 0.095158272,
+        "forward_FLOP": 190316544,
+        "count": 1,
+        "total_GMAC": 0.095158272
+      },
+      {
+        "name": "1mm media gate from pooled8",
+        "voxels": 2973696,
+        "real_cin": 8,
+        "real_cout": 16,
+        "kernel": 1,
+        "depthwise_plus_pointwise": false,
+        "MAC": 380633088,
+        "GMAC": 0.380633088,
+        "forward_FLOP": 761266176,
+        "count": 1,
+        "total_GMAC": 0.380633088
+      },
+      {
+        "name": "2mm media gate from pooled8",
+        "voxels": 371712,
+        "real_cin": 8,
+        "real_cout": 48,
+        "kernel": 1,
+        "depthwise_plus_pointwise": false,
+        "MAC": 142737408,
+        "GMAC": 0.142737408,
+        "forward_FLOP": 285474816,
+        "count": 1,
+        "total_GMAC": 0.142737408
+      },
+      {
+        "name": "4mm media gate from pooled8",
+        "voxels": 46464,
+        "real_cin": 8,
+        "real_cout": 96,
+        "kernel": 1,
+        "depthwise_plus_pointwise": false,
+        "MAC": 35684352,
+        "GMAC": 0.035684352,
+        "forward_FLOP": 71368704,
+        "count": 1,
+        "total_GMAC": 0.035684352
+      },
+      {
+        "name": "4mm post-axis pointwise",
+        "voxels": 46464,
+        "real_cin": 96,
+        "real_cout": 96,
+        "kernel": 1,
+        "depthwise_plus_pointwise": false,
+        "MAC": 428212224,
+        "GMAC": 0.428212224,
+        "forward_FLOP": 856424448,
+        "count": 6,
+        "total_GMAC": 2.569273344
+      },
+      {
+        "name": "4mm axial low-rank token mixing",
+        "rank": 8,
+        "axes_per_cycle": 3,
+        "cycles": 2,
+        "MAC": 428212224,
+        "total_GMAC": 0.428212224
+      }
+    ],
+    "forward_GMAC": 81.963982848,
+    "forward_TFLOP": 0.163927965696,
+    "media_input_lift_GMAC_per_channel": 0.190316544,
+    "full_formula": "forward_GMAC + media_input_lift_GMAC_per_channel * C_m",
+    "forward_GMAC_for_current_media1": 82.154299392,
+    "excluded": [
+      "elementwise gate/activation/residual operations",
+      "geometry feature generation",
+      "interpolation/norm/packing data movement",
+      "backward/recomputation/DDP/optimizer"
+    ]
+  },
+  "query_decoder": {
+    "hidden_layers": 4,
+    "width": 256,
+    "full_ROI_GMAC": 6236.292513792,
+    "valid_mask_GMAC": 1337.429590016,
+    "note": "Four square hidden transforms; excludes input/output transforms"
+  }
+}

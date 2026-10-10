@@ -1,50 +1,19 @@
-# TUS Array Surrogate Research Workspace
+# 经颅复声场预测：V10研究资料
 
-这是一个面向“3D 经颅超声阵列设计 / 声场预测 / 神经网络 surrogate model”的个人科研工作区。
+这是供GPT网页版读取的精简资料快照，整理日期2026-10-10。当前研究：固定MIDA、500 kHz、可变颅外单点源，预测大三维ROI内颅内Re/Im复声场形状。
 
-仓库的目标不是堆积聊天笔记，而是让用户与 Codex 围绕同一套项目状态、证据规则和自主研究任务持续协作。
+## 给GPT的最短阅读顺序
 
-## 开始工作
+1. [当前状态与Codex已完成工作](docs/CURRENT_STATUS.md)：项目现在研究什么、已有结果、新设计处于什么阶段。
+2. [V10科学合同](docs/project_design_handoff_v10.md)：输入输出、数据、评价与保留的边界。
+3. [本轮架构综合判断](experiments/survey&design/SYNTHESIS.md)：论文怎样改变取舍，主候选为什么这样设计。
+4. 按问题读取[论文索引](docs/literature_seen_index.md)、[M0设计](experiments/survey&design/medium_source/DESIGN.md)或[验证方案](experiments/survey&design/VALIDATION.md)。
 
-用 Codex 打开本目录后，优先读取：
+## 目录
 
-1. `AGENTS.md`：项目规则与边界；
-2. `docs/project_design_handoff_v1.md`：2026-07-26 面向 Codex 的阶段性项目设计快照；
-3. `docs/project_concept_v7.md`：当前项目源构想；
-4. `docs/memory.md`：最新状态、近期关注和时间线；
-5. `docs/decisions.md`：稳定共识；
-6. `docs/questions.md`：开放问题；
-7. `docs/research_tasks.md`：已获用户批准的自主研究 mission。
+- [docs](docs/README.md)：V10、已读论文、最少必要证据及来源地图。
+- [experiments/survey&design](experiments/survey&design/README.md)：调研任务书、审查规则、五个方向的论文/设计/验证与解析成本。
 
-## 四层工作流
+解释时分别说清：已有运行事实、论文结果、诊断线索、候选假设。新M0尚未训练，82.15 GMAC是解析前向核心运算量，4 s完整五卡更新尚待实测；基线引用截至2026-10-08记录，不代表实时服务器状态。
 
-```text
-稳定知识层
-project_concept / memory / decisions / ideas / questions
-        ↓
-任务合同层
-research_tasks.md 中 1-3 个用户批准的 Research Mission
-        ↓
-执行与证据层
-主 Agent + 可选子 Agent + Worktree，产物进入 docs/agent_runs/
-        ↓
-人工验收层
-用户学习、批注、批准后，再更新核心记忆
-```
-
-## 当前技术主线
-
-第一阶段固定 MIDA、频率和激励幅值，网络介质输入固定为单通道三维声速场，优先研究理想方向性点源的位置 / 法向变化。target focus 不进入单源网络，只用于下游相位 / 延迟、阵列组合和评价。主 U-Net 预测逐样本归一化的相对复声场 `q_Re/q_Im`，A4 预测脑内绝对峰值尺度，二者共同重建指定三维域内的单阵元绝对复声场。
-
-当前核心路线是“相对复场预测 + 独立绝对尺度预测 + 单阵元绝对复场重建 + 网络外多阵元相干叠加”。三维离散 Helmholtz 残差仍是全场预测的核心物理约束候选，但训练时必须先把相对预测恢复到绝对量纲。
-
-## Git 使用方式
-
-- `main`：用户认可的稳定状态；
-- `codex/*` 或 Worktree：Codex 的后台研究与改造；
-- commit：阶段性可回滚快照；
-- 大型数据、外部仓库、模型权重和运行产物默认不进入 Git。
-
-个人研究阶段不强制使用 Issue 或 Pull Request。
-
-论文阅读默认不使用多 Agent：Codex 先给简洁导读，用户自己精读，再围绕具体问题讨论。
+本分支展示部分研究资料，完整代码、历史实验、Label/checkpoint、日志和用户Todo保留在本地或原存储位置。旧版本与旧实验从当前目录清理，Git历史仍保留。导出取舍与来源见[来源地图](docs/SOURCE_MAP.md)。

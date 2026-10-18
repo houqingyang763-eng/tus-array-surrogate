@@ -1,14 +1,14 @@
 # 当前资料入口
 
-2026-10-18当前调查为 [experiment02综合报告](../experiments/survey&design/experiment02/REPORT.md)；[关键文献](../experiments/survey&design/experiment02/REFERENCES.md)、[当前状态](CURRENT_STATUS.md)、[轮次地图](../experiments/survey&design/README.md)和[统一索引P01–P86](literature_seen_index.md)提供定位。
+2026-10-19当前调查为 [experiment02综合报告](../experiments/survey&design/experiment02/REPORT.md)，七项深入补查与重写已完成，待人工阅读验收；[关键文献](../experiments/survey&design/experiment02/REFERENCES.md)、[当前状态](CURRENT_STATUS.md)、[轮次地图](../experiments/survey&design/README.md)和[统一索引P01–P98](literature_seen_index.md)提供定位。
 
 下文保留前轮资料地图及其历史描述；稳定V10合同与本轮比较任务分开。
 
 # 资料地图
 
-更新：2026-10-18。先读[当前状态](CURRENT_STATUS.md)，再进入[当前轮次](<../experiments/survey&design/exploration 01/README.md>)。
+以下为2026-10-18保留的前轮资料地图；当前轮次入口见本文开头。
 
-## 当前探索
+## 前轮exploration 01
 
 - [任务书](<../experiments/survey&design/exploration 01/MISSION.md>)、[判断标准](<../experiments/survey&design/exploration 01/REVIEW.md>)。
 - [综合判断](<../experiments/survey&design/exploration 01/SYNTHESIS.md>)、[候选设计](<../experiments/survey&design/exploration 01/coupled_interface/DESIGN.md>)、[验证方案](<../experiments/survey&design/exploration 01/coupled_interface/VALIDATION.md>)。

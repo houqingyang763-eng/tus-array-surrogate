@@ -37,14 +37,14 @@
 | 相位周期性、圆周分类、少样本适配 | P15 | 阵元控制量与体素相位；是否使用测试颅骨适配 |
 | 多损失、梯度量级、PCGrad、任务共享/拆分 | P18–P20 | 量级失衡、方向冲突和负迁移分别处理 |
 | 扩散 U-Net、scale-shift 条件化、分类器引导 | P21 | 图像生成指标与确定性物理场误差的区别 |
-| 学习迭代器、神经预条件、FGMRES、多重网格 | P09、P26–P27、P46–P49、P59、P76–P78 | 经颅先例已到2022学位论文；传统强MG已有新改进；迭代次数、完整时间与复场误差分开 |
+| 学习迭代器、神经预条件、FGMRES、多重网格 | P09、P26–P27、P46–P49、P59、P76–P78、P87–P90、P96 | 经颅先例已到2022学位论文；优化粗色散/递归deflation与隐式encoder–solver已进入比较；迭代次数和完整时间分开 |
 | 学习延拓、近零子空间、deflation、Petrov–Galerkin | P60–P61、P63–P65、P70 | SPD/不定适用条件；近零样本矩阵与物理A的奇异空间分开 |
 | 界面条件、Schwarz、Schur、DtN、辅助状态 | P62、P66–P67、P72、W02 | 学习什么未知量；预训练残差校正与逐题求网络权重分开 |
 | 散射分解、HINTS散射、双端口、相容空间 | P68–P69、P71、P73 | 原方程残差与场差值分开；端口组合和结构相容本身已有先例 |
 | 粗仿真+超分辨率、坐标算子、局部峰压 | P51、P54–P55 | 真3D/未见颅骨仍不等于复场；网络前向与粗仿真总时间分开 |
 | Label 基准、物理验证、声电应用、逆向导航 | P14、P22、P24 | 仿真可信度、下游应用与场预测分开 |
-| 传统Born、快速传播、时频桥接、压缩直接解 | P45、P53、P57、P74–P85 | 单配置总场与独立多RHS分开；计入源处理、介质准备及离散/边界条件 |
-| 三维域分解、OSM/ORAS、扫描、谱粗空间 | P66、P75、P79–P81、P86 | 局部因子可复用；批量吞吐不直接迁移；真算子中的近似与预条件近似分开 |
+| 传统Born、快速传播、时频桥接、压缩直接解 | P45、P53、P57、P74–P85、P91、P93–P95、P97 | 单配置总场与独立多RHS分开；GPU时域、HOD-BF与GPU-BLR的版本/成本分别核查 |
+| 三维域分解、OSM/ORAS、扫描、谱粗空间 | P66、P75、P79–P81、P86、P92、P98 | 局部因子可复用；粗空间构造/内解不能漏计；批量吞吐不直接迁移 |
 
 ## 研究条目清单
 
@@ -393,7 +393,7 @@ P/S 波速 + 复体力源 + 频率→三分量复位移；U 形神经算子预�
 
 ### P57 · mSOUND颅骨验证 · 2026 OJUFFC
 
-**Numerical Validation of mSOUND Using Fully Heterogeneous Skull Models**；DOI 10.1109/OJUFFC.2026.3677158，PMID41971001。**摘要登记。**真实异质颅骨快速传统传播验证，非学习先例；焦域精度和速度声明不等于全复场形状误差。本轮不凭摘要做公平基线定量。[NCBI](https://pubmed.ncbi.nlm.nih.gov/41971001/)。
+**Numerical Validation of mSOUND Using Fully Heterogeneous Skull Models**；DOI10.1109/OJUFFC.2026.3677158，PMID41971001。experiment02已升级全文核查：ESSF双参考速度、4阶反射；计时包含单列FOCUS源平面；不是Re/Im形状误差。公开旧v01代码不等于2026测试版本。[NCBI](https://pubmed.ncbi.nlm.nih.gov/41971001/)、[证据](../experiments/survey&design/experiment02/REFERENCES.md#r27)。
 
 2026-10-18 experiment02补全文：经公开作者稿XML核查§II–V、表1，属于已知论文深化。ESSF单向传播/有限反射，平面输入需FOCUS；4片段来自2名受试者。0.5 mm时源平面287.77 s+传播36.45 s，k-Wave CPU3646.48 s；全文指标主要是幅值/焦域，非当前Re/Im形状。[证据与条件](../experiments/survey&design/experiment02/REFERENCES.md#r06)。
 
@@ -519,31 +519,59 @@ P74–P86为13个新登记编号，合计86个编号；不等于86份独立实�
 
 ### P86 · Hk-GenEO · Dolean/Fry/Graham/Langer · 2024预印本
 
-**Schwarz preconditioner with Hk-GenEO coarse space for the indefinite Helmholtz problem**；arXiv2406.06283v1。定向读问题、谱粗空间和理论部分；数值未逐表抽取。说明不定Helmholtz有传统谱粗空间竞争，未作为三维经颅性能证据。[正文](https://arxiv.org/html/2406.06283v1)、[证据](../experiments/survey&design/experiment02/REFERENCES.md#r22)。
+**Schwarz preconditioner with Hk-GenEO coarse space for the indefinite Helmholtz problem**；arXiv2406.06283v1。核问题、谱粗空间和理论；所读v1无独立数值表，实际三维粗空间竞争改读P98。说明不定Helmholtz有传统谱粗空间，不代填经颅速度。[正文](https://arxiv.org/html/2406.06283v1)、[证据](../experiments/survey&design/experiment02/REFERENCES.md#r22)。
 
 ## 2026-10-18 experiment02反思补查：遗漏的强竞争链
 
-P87–P91为5个补查入口，当前合计91个登记编号。新增编号不表示深入比较完成：此次重点确认首轮遗漏与纠正推理，各条阅读深度明确列出。[本次来源与缺口](../experiments/survey&design/experiment02/REFERENCES.md#r24)、[反思](../experiments/survey&design/experiment02/REPORT.md#11-用户质疑后的反思哪些工作实际没有做完)。均属于已有MG/deflation/压缩分解家族延伸，不称新方法发现。
+P87–P91最初用于确认遗漏，随后已补算法、数值、成本及作者实现核查；P92–P98继续补入同家族强实现与反例。当前合计98个登记编号，包含演进链而非98份独立实证。[深入证据](../experiments/survey&design/experiment02/REFERENCES.md#r24)、[七项补齐结果](../experiments/survey&design/experiment02/REPORT.md#10-七项缺口的补齐结果与最终取舍)。均属于已有家族延伸，不称新方法发现。
 
 ### P87 · 优化粗网格校正 · Stolk/Ahmed/Bhowmik · SISC2014
 
-**A multigrid method for the Helmholtz equation with optimized coarse grid corrections**；arXiv1304.4103。定向核引言、三维/边界处理和结论：粗细传播相位对齐，优化粗算子及PML粗化；粗层3.5点条件不等于细层直接精度。完整成本和强界面适配待深入。[正文](https://arxiv.org/html/1304.4103)、[定位](../experiments/survey&design/experiment02/REFERENCES.md#r24)。
+**A multigrid method for the Helmholtz equation with optimized coarse grid corrections**；arXiv1304.4103。已补§2、§5.2/表11–12：粗细相速匹配、三维常系数及PML保留法向分辨率；粗层3.5点不等于细场精度。结合P88/P92比较完整粗解。[正文](https://arxiv.org/html/1304.4103)、[定位](../experiments/survey&design/experiment02/REFERENCES.md#r24)。
 
-### P88 · IOFD低色散离散与混合求解 · Stolk · 2015预印本
+### P88 · IOFD低色散离散与混合求解 · Stolk · JCP2016
 
-**A dispersion minimizing scheme for the 3-D Helmholtz equation based on ray theory**；arXiv1504.01609。定向核引言和求解段：常系数/光滑介质5–6点传播、两网格配double-sweep粗逆及三维测试。正式版关系、界面条件和完整成本待查；不据此宣布当前颅骨可用。[正文](https://arxiv.org/html/1504.01609)、[定位](../experiments/survey&design/experiment02/REFERENCES.md#r24)。
+**A dispersion minimizing scheme for the 3-D Helmholtz equation based on ray theory**；arXiv1504.01609v2，正式版JCP314(2016),618–646，DOI10.1016/j.jcp.2016.03.023。已补§6–8/表5–6：IOFD低色散、细层6点/粗层3点、三维盐丘扫描；约50M例45s/右端来自4右端总179s。强梯度精度仍有条件。[正文](https://arxiv.org/html/1504.01609)、[定位](../experiments/survey&design/experiment02/REFERENCES.md#r24)。
 
 ### P89 · 多层deflation · Dwarka/Vuik · JCP2022
 
-**Scalable multi-level deflation preconditioning for highly indefinite time-harmonic waves**；DOI10.1016/j.jcp.2022.111327。摘要/方法片段核查：高阶粗基、递归deflation、CSLP及内层迭代，完整数值/成本待读；非神经PCG工作，不与P70混淆。[大学记录](https://repository.tudelft.nl/record/uuid%3Ac4014afa-f934-41e1-99e4-76f696fe8dd5)、[定位](../experiments/survey&design/experiment02/REFERENCES.md#r24)。
+**Scalable multi-level deflation preconditioning for highly indefinite time-harmonic waves**；DOI10.1016/j.jcp.2022.111327。已读公开全文§3/§5并视觉核表7：递归高阶基、CSLP内BiCGSTAB；含二维/三维。较少外步的W-cycle可能更慢，计时含粗矩阵构造；非P70神经PCG。[大学全文](https://repository.tudelft.nl/file/File_ac31135c-762a-47a3-ab8c-5d774fbeb62d)、[定位](../experiments/survey&design/experiment02/REFERENCES.md#r24)。
 
 ### P90 · matrix-free并行多层deflation · Chen/Dwarka/Vuik · JSC2025
 
-**Matrix-Free Parallel Scalable Multilevel Deflation Preconditioning for Heterogeneous Time-Harmonic Wave Problems**；arXiv2412.04980，DOI10.1007/s10915-024-02786-w。元数据/摘要核查并定位全文；P78之后独立工作，结合高阶deflation与matrix-free并行。正文/性能尚未深入，不作速度排序证据。[正文](https://arxiv.org/html/2412.04980v1)、[定位](../experiments/survey&design/experiment02/REFERENCES.md#r24)。
+**Matrix-Free Parallel Scalable Multilevel Deflation Preconditioning for Heterogeneous Time-Harmonic Wave Problems**；arXiv2412.04980，DOI10.1007/s10915-024-02786-w。已读§3–5/表9–13：细两层MG-CSLP、递归粗解、内容差调优；论文算例二维。另读作者2025-06-24 DD29报告：已有大三维后续测试及粗校正权重γ；来源身份与计时条件分开，不由二维论文代填。[正文](https://arxiv.org/html/2412.04980v1)、[后续定位](../experiments/survey&design/experiment02/REFERENCES.md#r24)。
 
 ### P91 · 高频butterfly多前沿分解 · Liu/Ghysels/Claus/Li · SISC2021
 
-**Sparse Approximate Multifrontal Factorization with Butterfly Compression for High-Frequency Wave Equations**；arXiv2007.00202，DOI10.1137/20M1349667。定向读摘要、引言/机制：面向高频前沿矩阵的butterfly互补低秩，区别于一般低秩；三维准备/在线/内存的实际常数及迁移需深入。[正文](https://arxiv.org/html/2007.00202)、[定位](../experiments/survey&design/experiment02/REFERENCES.md#r24)。
+**Sparse Approximate Multifrontal Factorization with Butterfly Compression for High-Frequency Wave Equations**；arXiv2007.00202，DOI10.1137/20M1349667。已读§5–6/表2–3并核STRUMPACK入口：分解/在线/因子存储分别计。高频butterfly不同于普通BLR；大存储常数、压缩精度与Q摊销可改变优选。P85 GPU-BLR不能拼成GPU-HODBF成绩。[正文](https://arxiv.org/html/2007.00202)、[定位](../experiments/survey&design/experiment02/REFERENCES.md#r24)。
+
+### P92 · 两网格双向扫描 · Stolk · 1412.0464
+
+**An improved sweeping domain decomposition preconditioner for the Helmholtz equation**；arXiv1412.0464，早期题名two-grid accelerated sweeping。读§4–6/表8/附录A：优化粗算子、平滑、局部PML因子和UD/X扫描，准备/在线分列；与P88归一演进链。[正文](https://arxiv.org/html/1412.0464)、[证据](../experiments/survey&design/experiment02/REFERENCES.md#r25)。
+
+### P93 · GPU局部WaveHoltz · Rotem · 2026预印本
+
+**Efficient Domain Decomposition for the Helmholtz Equation on GPUs**；arXiv2606.21695v1。读§III、V–VII/表I：A100单block局部求解，三维速度收益0.71–8.48倍；25倍为二维。粗空间和强传输仍待扩展，非整个复杂头颅解的加速倍数。[正文](https://arxiv.org/html/2606.21695)、[证据](../experiments/survey&design/experiment02/REFERENCES.md#r26)。
+
+### P94 · 经颅GPU HAS · Almquist等 · 2016
+
+**Rapid full-wave phase aberration correction method for transcranial high-intensity focused ultrasound therapies**；DOI10.1186/s40349-016-0074-7，PMC5143441。读Methods/计时：HAS的波束传播及反射能力；256阵元场库和校正约15min，不是一次总场延迟。[原文](https://pmc.ncbi.nlm.nih.gov/articles/PMC5143441/)、[证据](../experiments/survey&design/experiment02/REFERENCES.md#r27)。
+
+### P95 · mSOUND工具箱 · Gu/Jing · TUFFC2021
+
+**mSOUND: An Open Source Toolbox for Modeling Acoustic Wave Propagation in Heterogeneous Media**；DOI10.1109/TUFFC.2021.3051729，PMC8101065。核作者发布入口及公开v01 zip实际三维传播/多源平面代码。该版不是P57/2026的ESSF实现；两者不混作同一计时源码。[原文](https://pmc.ncbi.nlm.nih.gov/articles/PMC8101065/)、[证据](../experiments/survey&design/experiment02/REFERENCES.md#r27)。
+
+### P96 · 隐式粗层encoder–solver · Lerer/Ben-Yair/Treister · SISC2024
+
+**Multigrid-Augmented Deep Learning Preconditioners for the Helmholtz Equation Using Compact Implicit Layers**；arXiv2306.17486，DOI10.1137/23M1583302。P61方向延伸；读§4–5和作者代码：粗层卷积逆、分离编码/在线成本、固定权重OOD与逐题retrain、放大失败例；公开包装器未显式缓存介质编码。[正文](https://arxiv.org/html/2306.17486)、[证据](../experiments/survey&design/experiment02/REFERENCES.md#r28)。
+
+### P97 · 高阶GPU时域FUS · Kor · Cambridge博士论文2024
+
+**Fast finite element methods for focused ultrasound applications**；DOI10.17863/CAM.116100。读第7章GPU算子/通信/模拟与作者源码：质量集块、sum-factorisation、显式RK4；约6min平面源例含二维切片输出，非完整异质头颅复场计时。[学校全文](https://www.repository.cam.ac.uk/items/22a5121c-ea96-4920-9639-26238644adc7)、[证据](../experiments/survey&design/experiment02/REFERENCES.md#r29)。
+
+### P98 · Helmholtz粗空间比较 · Bootland等 · CMA2021
+
+**A comparison of coarse spaces for Helmholtz problems in the high frequency regime**；arXiv2012.02678v3，CMA98,239–253。读§4–6/表17–19：网格/DtN/H-GenEO和两层ORAS，有三维；构造、粗问题内迭代与大粗空间资源限制不能漏计。本文未充分优化计时，不作速度榜。[正文](https://arxiv.org/html/2012.02678)、[证据](../experiments/survey&design/experiment02/REFERENCES.md#r30)。
 
 ## 非论文网页（保留查重，不计入研究条目总数）
 

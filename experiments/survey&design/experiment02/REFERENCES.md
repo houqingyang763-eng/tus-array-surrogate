@@ -1,6 +1,6 @@
 # experiment02：关键文献与证据入口
 
-核查日期：2026-10-18。这里只保存来源、读取深度与判断定位；综合取舍见 [REPORT](REPORT.md)。P 编号沿用[统一索引](../../../docs/literature_seen_index.md)。
+核查日期：2026-10-18—19。这里只保存来源、读取深度与判断定位；综合取舍见 [REPORT](REPORT.md)。P 编号沿用[统一索引](../../../docs/literature_seen_index.md)。
 
 “已知”指索引已有；“本轮补录”只指索引此前未登记，属于已有方法家族延伸。预印本和正式版不重复计证据。本文没有把作者结果改写为项目实测，也没有操作 Zotero。
 
@@ -166,7 +166,7 @@ Claus、Ghysels、Boukaram、Li，*A graphics processing unit accelerated sparse
 <a id="r22"></a>
 ### R22 · P86 · Hk-GenEO 粗空间 · 本轮补录，机制定位
 
-Dolean、Fry、Graham、Langer，*Schwarz preconditioner with Hk-GenEO coarse space for the indefinite Helmholtz problem*，arXiv 2406.06283v1。[正文](https://arxiv.org/html/2406.06283v1)、[FreeFEM 官方示例](https://doc.freefem.org/documentation/ffddm/examples.html)。本轮读问题、粗空间和理论部分，数值未逐表抽取；不为其填写三维经颅性能。用途是确认谱粗空间不是只为 SPD 扩散设计，提醒学习粗基须与传统谱构造竞争。
+Dolean、Fry、Graham、Langer，*Schwarz preconditioner with Hk-GenEO coarse space for the indefinite Helmholtz problem*，arXiv 2406.06283v1。[正文](https://arxiv.org/html/2406.06283v1)、[FreeFEM 官方示例](https://doc.freefem.org/documentation/ffddm/examples.html)。本轮读问题、粗空间和理论部分；所读v1正文没有独立数值实验章节或表格，不填写三维经颅性能。实际粗空间数值竞争补读R30，二者不混称。用途是确认谱粗空间不是只为SPD扩散设计，提醒学习粗基须与传统谱构造竞争。
 
 <a id="r23"></a>
 ### R23 · P53 · VBS · 已知，全文缺口保留
@@ -183,19 +183,70 @@ Sun、Li、Su、Lin，*A viscoacoustic wave equation solver using modified Born 
 
 本轮未读取与比较无关的历史项目协议、未把论文版本的新公开时间当新算法，也未为了凑文献数给每条搜索命中分配编号。
 
-## 用户质疑后的漏项补查：入口已确认，深入比较未完成
+## 深入补查：强基底、反例与实现
 
 <a id="r24"></a>
-### R24 · P87–P91 · 会改变判断的强竞争方法
+### R24 · P87–P91 · 优化粗网格、多层 deflation 与 butterfly 分解
 
-以下为首轮真实漏项或未深入的关键后续工作。已先查统一索引，不宣称新方法发现；本次用于确认遗漏和纠正推理，尚未完成各自全部数值、实现和成本比较。不能把这5个入口计成5篇深入读完。
+这组是首轮遗漏后补读的既有强方法。本次已读对应算法、数值和成本段；它们改变了报告的比较对象。以下表中的时间均为作者条件，不能外推为 MIDA 时间。
 
-| 编号与来源 | 本次核到哪里 | 为什么影响首轮取舍 | 尚需补什么 |
-| --- | --- | --- | --- |
-| **P87** Stolk、Ahmed、Bhowmik，*A multigrid method for the Helmholtz equation with optimized coarse grid corrections*，SISC36(6), A2819–A2841 (2014)，arXiv1304.4103。[正文](https://arxiv.org/html/1304.4103) | 引言、三维/边界处理与结论：对齐粗细相速，三维优化粗算子；粗层约3.5点的条件与细层分辨率不同；PML有针对性粗化 | 先进MG并非只有P76/P77；粗相位失配处理有成熟前序，原先10–12点比较不完整 | 细算子适配、平滑/粗解的总成本、三维强界面和边界条件、作者实现 |
-| **P88** Stolk，*A dispersion minimizing scheme for the 3-D Helmholtz equation based on ray theory*，arXiv1504.01609。[正文](https://arxiv.org/html/1504.01609) | 引言和§7附近：常系数/平滑介质5–6点传播例；两网格结合double-sweep粗逆，含三维盐丘测试 | 低点/波长及MG/扫描混合有具体研究，不能将6点条件仅作为MG迁移负面因素 | 精确版本和正式发表信息、异质跳变条件、准备/在线及原方程精度；不把光滑介质结论套给颅骨 |
-| **P89** Dwarka、Vuik，*Scalable multi-level deflation preconditioning for highly indefinite time-harmonic waves*，JCP469,111327 (2022)，DOI10.1016/j.jcp.2022.111327。[大学记录](https://repository.tudelft.nl/record/uuid%3Ac4014afa-f934-41e1-99e4-76f696fe8dd5)、[出版社](https://doi.org/10.1016/j.jcp.2022.111327) | 摘要、出版社§3.1–3.2方法片段：高阶粗基、递归deflation与CSLP/内层迭代组合 | 强基底不仅是给普通MG换平滑器；近零模式对齐和粗层成本还有一套完整传统解法 | 2D/3D范围、嵌套容差/运算、硬件与精度计时，及后续实现关系 |
-| **P90** Chen、Dwarka、Vuik，*Matrix-Free Parallel Scalable Multilevel Deflation Preconditioning for Heterogeneous Time-Harmonic Wave Problems*，JSC102,47 (2025)，arXiv2412.04980，DOI10.1007/s10915-024-02786-w。[正文](https://arxiv.org/html/2412.04980v1)、[大学记录](https://repository.tudelft.nl/record/uuid%3A687f0019-1b3c-41b9-bdbe-89bb8cb1e010) | 核元数据/摘要并定位正文，确认是P78之后独立的多层deflation工作 | 首轮读了P78基础CSLP却没追到后续更强组合，传统基底比较不完整 | 正文、数值表和实现尚需深入；当前不引用其速度作排序 |
-| **P91** Liu、Ghysels、Claus、Li，*Sparse Approximate Multifrontal Factorization with Butterfly Compression for High-Frequency Wave Equations*，SISC43(5),S367–S391 (2021)，DOI10.1137/20M1349667，arXiv2007.00202。[正文](https://arxiv.org/html/2007.00202)、[出版社](https://epubs.siam.org/doi/10.1137/20M1349667) | 摘要、引言及格式机制：针对高频振荡前沿矩阵，使用butterfly/complementary low-rank，区别于一般低秩压缩 | 用未压缩LU或一般低秩的扩展性来降级所有压缩因子不充分；它也可作迭代预条件 | 三维实际常数、因子准备/在线/内存、压缩误差和迭代成本，及当前变密度算子适配 |
+| 编号与来源 | 原文定位及关键事实 | 本轮用途与边界 |
+| --- | --- | --- |
+| **P87** Stolk、Ahmed、Bhowmik，SISC36(6), A2819–A2841 (2014)，arXiv1304.4103。[正文](https://arxiv.org/html/1304.4103) | §2、§5.2/表11–12：粗细相速匹配；三维常系数在粗层≥3.5点时表现良好；直接粗化 PML 失败后保留法向分辨率 | 低点/波长的主要障碍是具体粗算子和边界处理，不能按家族一概降级。该表不是复杂三维颅骨测试 |
+| **P88** Stolk，*A dispersion minimizing scheme for the 3-D Helmholtz equation based on ray theory*，JCP314,618–646 (2016)，DOI10.1016/j.jcp.2016.03.023，arXiv1504.01609v2。[正文](https://arxiv.org/html/1504.01609) | §6–8/表5–6：IOFD 细层6点、粗层3点；三维盐丘两网格+双向扫描，约5千万未知量、128核、4右端总179 s（45 s/右端），13步；平滑例的离散精度与跳变反射分开 | 原文明确强梯度需要更细的介质/源离散。可保留优化粗层机制；不能直接替换本项目细算子，或把批处理吞吐写成单配置延迟 |
+| **P89** Dwarka、Vuik，JCP469,111327 (2022)，DOI10.1016/j.jcp.2022.111327。[公开全文](https://repository.tudelft.nl/file/File_ac31135c-762a-47a3-ab8c-5d774fbeb62d) | §3/算法、§5/表6–8；PDF印刷p17–21：递归高阶基、CSLP内用BiCGSTAB，定层内迭代上限。顺序MATLAB/i7-8665U/8GB；三维sine约177万未知量，V/W为49/28步、1259.18/1359.92 s。计时含粗矩阵构造 | 有真实三维证据，但外迭代下降未必省时；不把35点/波长的波数独立性套到6点。本次已视觉核表7 |
+| **P90** Chen、Dwarka、Vuik，JSC102,47 (2025)，DOI10.1007/s10915-024-02786-w。[正文](https://arxiv.org/html/2412.04980v1)；[作者DD29报告，2025-06-24](https://diamhomes.ewi.tudelft.nl/~kvuik/talks/DD29_MS07-JinqiangChen_An_Efficient_Parallel_Multilevel_Deflation_Method_for_Large_Scale_Helmholtz_Problems.pdf) | 论文§3–5/表9–13：matrix-free递归FGMRES、细两层用MG-CSLP、粗层Krylov；最终L2容差0.3，其他粗层一次。论文算例为二维。**作者后续报告**第15–18张另有三维：约6.3亿未知量及更大地质模型，并改变粗校正权重γ；不能将其称作论文表 | 补查到三维实现后，不再用“新版只有二维”排除其大三维竞争资格。后续报告未公开完整计时合同/可核源码，不借其秒数做跨论文排名 |
+| **P91** Liu等，SISC43(5),S367–S391 (2021)，DOI10.1137/20M1349667。[正文](https://arxiv.org/html/2007.00202) | §5–6/表2–3：HOD-BF压缩多前沿因子+GMRES(30)，FP64，预条件残差停止。32×32核Cori。250³例：分解433 s、在线3.5 s、因子730 GB；21.18M异质例：ε=1e-4为1049/11.0 s、800 GB，ε=1e-6为1657/4.1 s、870 GB | O(N)因子存储仍有很大常数，且表给因子存储而非峰值。强压缩基底必须保留，但与单GPU快速换介质有实际资源差距；容差摊销在报告定量计算 |
 
-此处确认的是补查必要性，不提前认定这组方法优于Born或McMg。[报告第11节](REPORT.md#11-用户质疑后的反思哪些工作实际没有做完)列出补齐判断的要求。
+P90后续报告三维常系数513³例，CSLP与三层deflation分别343/12个外迭代，但时间62716/24681 s；129³小例则76/225 s。它支持“越大越值得额外粗层工作”的条件判断。第17张SEG/EAGE表已视觉核验。未知硬件/停止范围不由前一篇论文代填。
+
+<a id="r25"></a>
+### R25 · P92 · 两网格扫描的完整准备—在线分离
+
+Stolk，*An improved sweeping domain decomposition preconditioner for the Helmholtz equation*，arXiv1412.0464（早期题名为two-grid accelerated sweeping）。[正文](https://arxiv.org/html/1412.0464)。§4–6/表8/附录A：优化粗算子、Jacobi、粗层PML子域MUMPS分解及UD/X扫描。约13M三维盐丘，32核、单右端X-sweep：setup49 s，solve22 s，11步；约50M的31 s/右端来自4右端。准备未计入在线表列。薄PML和并行partial sweep均有迭代恶化反例。与P88是一条方法演进链，不计为独立成功验证。
+
+<a id="r26"></a>
+### R26 · P93 · GPU局部WaveHoltz
+
+Rotem，*Efficient Domain Decomposition for the Helmholtz Equation on GPUs*，arXiv2606.21695v1。[正文](https://arxiv.org/html/2606.21695)。§III、V–VII/表I：谱元、零阶传输、子域驻留单thread block、局部WaveHoltz；A100，局部单精度/双精度相对残差1e-6/1e-12。三维对MINRES加速范围0.71–8.48倍；“25倍”来自二维。作者将优化传输及粗空间列作后续工作。本次核正文和benchmark，不把局部核速度当整个复杂介质求解速度；未定位带论文身份的公开完整实现。
+
+<a id="r27"></a>
+### R27 · P94–P95 · 快速传播的强例与公开版本边界
+
+- **P94** Almquist、Parker、Christensen，*Rapid full-wave phase aberration correction method for transcranial high-intensity focused ultrasound therapies*，J Therapeutic Ultrasound4:30 (2016)，DOI10.1186/s40349-016-0074-7。[原文](https://pmc.ncbi.nlm.nih.gov/articles/PMC5143441/)、[同一原文JATS](https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5143441/fullTextXML)。Methods及Computation time：GPU HAS支持阻抗反射，本文未启用散射；421×648×170颅骨、256阵元逐阵元压力模式和校正约15min。该数字是场库/校正批任务，不是本轮一次总场，也不除256造单次延迟。没有把HAS等同于射线。
+- **P95** Gu、Jing，*mSOUND: An Open Source Toolbox for Modeling Acoustic Wave Propagation in Heterogeneous Media*，TUFFC68(5),1476–1486 (2021)，DOI10.1109/TUFFC.2021.3051729。[原文](https://pmc.ncbi.nlm.nih.gov/articles/PMC8101065/)、[作者发布入口](https://github.com/m-SOUND/mSOUND)。实际读取公开zip中的`Forward3D_fund`和三维多源例。公开v01为混合域Simpson积分；**不等同**P57/2026的ESSF新版。P57正文§II和Methods注明新算法不同于原版、反射阶数设4；未找到该测试版本独立公开源码链接。
+
+P57全文通过[EuropePMC JATS](https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13064427/fullTextXML)读取，§IV的0.5mm时间应为FOCUS287.77+mSOUND36.45=324.22 s；k-Wave C++ CPU3646.48 s。不能省掉输入平面构造，也不能把CPU倍数当GPU倍数。
+
+<a id="r28"></a>
+### R28 · P96 · compact implicit encoder–solver
+
+Lerer、Ben-Yair、Treister，*Multigrid-Augmented Deep Learning Preconditioners for the Helmholtz Equation Using Compact Implicit Layers*，SISC46(5),S123–S144 (2024)，DOI10.1137/23M1583302，arXiv2306.17486。[正文](https://arxiv.org/html/2306.17486)、[作者代码](https://github.com/BGUCompSci/CompactImplicitHelmholtz)。这是P61的方向延伸，本次新增粗层隐式逆、实际缓存和OOD证据。§4.1–4.2、§5.1–5.3/表1、4、5：网络校正后再V-cycle、FGMRES(10)，二维；4096²编码0.052 s、每FGMRES步0.114 s，不能把每步时间当求解时间。固定权重OOD和300对/30epoch适配两组分开；只在128²训练的网络放大到4096²可能失败。代码实现核查见C06。
+
+<a id="r29"></a>
+### R29 · P97 · GPU高阶时域有限元
+
+Mohd Adeeb Bin Mohd Arif Kor，*Fast finite element methods for focused ultrasound applications*，Cambridge博士论文 (2024)，DOI10.17863/CAM.116100。[学校记录与全文](https://www.repository.cam.ac.uk/items/22a5121c-ea96-4920-9639-26238644adc7)、[作者GPU实现](https://github.com/adeebkor/fenicsx-fus-gpu)。第7章§7.2–7.6：高阶质量集块、sum-factorisation、显式RK4、多GPU直接通信；§7.6.1平面源benchmark单RTX A4000双精度约6min，含最后一周期二维切片输出。此项是强时域实现能力证据，未把它写成完整异质头颅体复场耗时。源码确认GPU时间推进和介质算子预计算；只读未运行。
+
+<a id="r30"></a>
+### R30 · P98 · 两层ORAS的实际粗空间竞争
+
+Bootland、Dolean、Jolivet、Tournier，*A comparison of coarse spaces for Helmholtz problems in the high frequency regime*，Computers & Mathematics with Applications98,239–253 (2021)，arXiv2012.02678v3。[正文](https://arxiv.org/html/2012.02678)。§4–6/表17–19：网格、DtN、H-GenEO各有条件；3D Overthrust11.33M，网格粗层23–24外步中仍含7–13内步；DtN减至6外步时每子域160基向量，最大粗空间因资源代价缺项。文末明确未充分比较优化计时；不是速度排行榜。P86的Hk-GenEO理论并不自动提供此表的成本结论，v1也无可抽取数值表。
+
+<a id="code-audit"></a>
+## 作者实现只读核查（2026-10-18—19）
+
+固定提交用于定位事实，不表示重现了论文数值；下载的公开代码和PDF留在D盘研究缓存，未安装、执行求解或上传原文。C01–C08均已读取列出的关键函数；未定位源码的工作如实列明，未拿自写重建代替作者实现。
+
+| 编号 | 固定版本与可核位置 | 实际核到的比较事实 |
+| --- | --- | --- |
+| C01 Born-density | [`2b59c72`主函数L145–152、376–485、488–529](https://github.com/ucl-bug/born-density-matlab/blob/2b59c72acf8637a8f314157a28d00380e19b0084/src/acousticHelmholtzSolver.m#L376)；同目录`singleIteration`/`residualMagnitude` | 介质准备在单调用内；循环计时之后仍分配输出/重标度/gather；每次检查真实残差额外调用算子；相对残差以第一次更新后的值归一化。3D更新与一次残差计算各8次FFT |
+| C02 WaveSim | [`5949196` iteration.py L7–90、93–132](https://github.com/IvoVellekoop/wavesim_py/blob/594919609784c99c0a003cada6173e282dd378f9/src/wavesim/iteration.py#L61)；`helmholtzdomain.py`L46–88、103–176 | 当前分离domain和source；复用介质/传播核。停止比较的是预条件残差范数平方；不能直接把threshold1e-6称为真实残差1e-6。当前NumPy/CuPy代码与P75论文时代实现有演进，2730s论文数字不由最新代码再次验证 |
+| C03 STRUMPACK | [`819ff1b` testHelmholtz.cpp L128–171](https://github.com/pghysels/STRUMPACK/blob/819ff1beaef0379e575fd77baaed8393948ca6d9/examples/sparse/testHelmholtz.cpp#L128)；[`HOD_Preconditioning.txt`L11–65](https://github.com/pghysels/STRUMPACK/blob/819ff1beaef0379e575fd77baaed8393948ca6d9/doc/doxygen/pages/HOD_Preconditioning.txt#L11) | `set_matrix→reorder→factor→solve`可复用因子；HODBF要HODLR格式加butterfly层参数，不是普通BLR开关。P85 GPU-BLR性能不可拼接到P91 CPU-HODBF，示例默认制造解也非颅骨应用 |
+| C04 Vanka | [`0e28ebb` SolverFunctions.jl L118–169](https://github.com/RacheliYovel/VankaHelmholtz/blob/0e28ebbab7128450d84e189ad74463acf3a7e168/Numerical%20-%20Julia/src/SolverFunctions.jl#L118) | 细真矩阵与移位预条件矩阵分开；显式`R/P/Ac/LUcoarsest`及Vanka块准备。此Julia研究代码不是matrix-free GPU大域实现，最细3层Jacobi也是必须比较的强同文对照 |
+| C05 mSOUND | [`9bfb65d`发布zip](https://github.com/m-SOUND/mSOUND/blob/9bfb65d3546807e7419b4a3794fcdc75c4fc26c0/download/mSOUND%20v01.zip)，内`Forward3D_fund.m`和`Example_FSMDM_3D_multi_sources.m` | 输入是一个复激励平面，多孔径先在该平面相加；函数内构造介质项，再逐层FFT。`tic/toc`主要包循环，前处理/反射另段不可漏计。该zip不是P57的新版ESSF |
+| C06 implicit encoder–solver | [`27efa77` implicit_unet.py L114–123、220–263](https://github.com/BGUCompSci/CompactImplicitHelmholtz/blob/27efa77ab0ffb5fd95d9e309a5c75dbfc4b6d267/unet/implicit_unet.py#L114)；[`helmholtz.py`末尾`nn_precond`](https://github.com/BGUCompSci/CompactImplicitHelmholtz/blob/27efa77ab0ffb5fd95d9e309a5c75dbfc4b6d267/helmholtz.py)；`evaluate.py`L27–41、86–100 | 公布包装器每次forward调用encoder；可直接调用独立encoder/solver以实现论文缓存，但默认评估包装没有显式跨迭代缓存。隐式Green缓存依赖权重/尺寸，和介质编码缓存不同。计时脚本有CUDA同步且含3步V-cycle初值 |
+| C07 Wave-ADR | [`07b3aff` diff_rhs.py L34–92](https://github.com/cuichen1996/Wave-ADR-NS/blob/07b3affc1149abcd2ebe3d7b32d76569eaacaf51/diff_rhs.py#L34)；`model/model.py`中`setup`/`test` | `setup`使用参考源坐标；但作者也以同一参考相位图解随机体右端。故不能断言多源必需逐源建图；准确判断是缓存含参考源选择，任意右端的收敛/成本要另分情况。`test`在线计时不包setup |
+| C08 FreeFEM / 时域代码 | [`418220d`三维ORAS示例L79–101](https://github.com/FreeFem/FreeFem-sources/blob/418220d29d26f6f83a3ad856e69c255058c94c44/examples/ffddm/Helmholtz-3d-simple.edp#L79)；[`c7f67f1`FUS GPU](https://github.com/adeebkor/fenicsx-fus-gpu/tree/c7f67f19fc27808fe6c5a027cddefe87980f96d0)；[`44ca4ed`k-Wave衍生CUDA](https://github.com/klepo/k-Wave-Fluid-CUDA/blob/44ca4ed1fce2319c1558ec5ba3a165d3d44a5da1/KSpaceSolver/KSpaceFirstOrderSolver.cpp#L275) | ORAS局部准备后再建粗网格；FUS GPU为作者原型、RK4和预计算真实存在；k-Wave衍生CUDA区分load/preprocess/simulation/postprocess，并支持压缩输出。它不是ucl官方最新CUDA源码，不将二者混称 |
+
+定向核论文链接、作者题名/主页后，仍未定位P27 McMg、P46 NPBS、P89/P90、Stolk完整三维实验的可核作者源码；这限制“现成复现容易”的工程评级，**不降低已核原文的数值能力评级**。L-Sweeps公开库`4166377`也已读取GMRES与局部分解入口，但库明确只有二维，未据此声称已检查三维作者实现。

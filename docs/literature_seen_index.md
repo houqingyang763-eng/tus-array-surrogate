@@ -521,6 +521,30 @@ P74–P86为13个新登记编号，合计86个编号；不等于86份独立实�
 
 **Schwarz preconditioner with Hk-GenEO coarse space for the indefinite Helmholtz problem**；arXiv2406.06283v1。定向读问题、谱粗空间和理论部分；数值未逐表抽取。说明不定Helmholtz有传统谱粗空间竞争，未作为三维经颅性能证据。[正文](https://arxiv.org/html/2406.06283v1)、[证据](../experiments/survey&design/experiment02/REFERENCES.md#r22)。
 
+## 2026-10-18 experiment02反思补查：遗漏的强竞争链
+
+P87–P91为5个补查入口，当前合计91个登记编号。新增编号不表示深入比较完成：此次重点确认首轮遗漏与纠正推理，各条阅读深度明确列出。[本次来源与缺口](../experiments/survey&design/experiment02/REFERENCES.md#r24)、[反思](../experiments/survey&design/experiment02/REPORT.md#11-用户质疑后的反思哪些工作实际没有做完)。均属于已有MG/deflation/压缩分解家族延伸，不称新方法发现。
+
+### P87 · 优化粗网格校正 · Stolk/Ahmed/Bhowmik · SISC2014
+
+**A multigrid method for the Helmholtz equation with optimized coarse grid corrections**；arXiv1304.4103。定向核引言、三维/边界处理和结论：粗细传播相位对齐，优化粗算子及PML粗化；粗层3.5点条件不等于细层直接精度。完整成本和强界面适配待深入。[正文](https://arxiv.org/html/1304.4103)、[定位](../experiments/survey&design/experiment02/REFERENCES.md#r24)。
+
+### P88 · IOFD低色散离散与混合求解 · Stolk · 2015预印本
+
+**A dispersion minimizing scheme for the 3-D Helmholtz equation based on ray theory**；arXiv1504.01609。定向核引言和求解段：常系数/光滑介质5–6点传播、两网格配double-sweep粗逆及三维测试。正式版关系、界面条件和完整成本待查；不据此宣布当前颅骨可用。[正文](https://arxiv.org/html/1504.01609)、[定位](../experiments/survey&design/experiment02/REFERENCES.md#r24)。
+
+### P89 · 多层deflation · Dwarka/Vuik · JCP2022
+
+**Scalable multi-level deflation preconditioning for highly indefinite time-harmonic waves**；DOI10.1016/j.jcp.2022.111327。摘要/方法片段核查：高阶粗基、递归deflation、CSLP及内层迭代，完整数值/成本待读；非神经PCG工作，不与P70混淆。[大学记录](https://repository.tudelft.nl/record/uuid%3Ac4014afa-f934-41e1-99e4-76f696fe8dd5)、[定位](../experiments/survey&design/experiment02/REFERENCES.md#r24)。
+
+### P90 · matrix-free并行多层deflation · Chen/Dwarka/Vuik · JSC2025
+
+**Matrix-Free Parallel Scalable Multilevel Deflation Preconditioning for Heterogeneous Time-Harmonic Wave Problems**；arXiv2412.04980，DOI10.1007/s10915-024-02786-w。元数据/摘要核查并定位全文；P78之后独立工作，结合高阶deflation与matrix-free并行。正文/性能尚未深入，不作速度排序证据。[正文](https://arxiv.org/html/2412.04980v1)、[定位](../experiments/survey&design/experiment02/REFERENCES.md#r24)。
+
+### P91 · 高频butterfly多前沿分解 · Liu/Ghysels/Claus/Li · SISC2021
+
+**Sparse Approximate Multifrontal Factorization with Butterfly Compression for High-Frequency Wave Equations**；arXiv2007.00202，DOI10.1137/20M1349667。定向读摘要、引言/机制：面向高频前沿矩阵的butterfly互补低秩，区别于一般低秩；三维准备/在线/内存的实际常数及迁移需深入。[正文](https://arxiv.org/html/2007.00202)、[定位](../experiments/survey&design/experiment02/REFERENCES.md#r24)。
+
 ## 非论文网页（保留查重，不计入研究条目总数）
 
 **RF Pulse design and parallel transmission (pTx)**，PTB 网页，Z=`MCHUDCSB`。属于 MRI 射频脉冲/并行发射主题；当前摘要只含机构介绍，不据此提炼具体方法。位于 `tus_surrogate` 根收藏夹。

@@ -116,3 +116,8 @@ V10阅读版来自稳定合同与exploration 01任务书；CURRENT_STATUS明确�
 - `experiments/survey&design/experiment02/SEARCH_LOG.md`
 
 阅读导航更新：根README/AGENTS、专题AGENTS、docs地图与当前状态；科学合同、历史报告正文、代码和数据不变。
+
+
+## experiment02用户质疑后的反思修正
+
+来源提交：`d1f2f56fae2d2e0d0d926af3a25dcf4f1ad451a6`；远端父提交：`4f6610c4838f6ecc8fac4911375a9904dc82a77b`。仅同步本轮6份修订及当前状态/阅读导航，撤回过早完成声明，新增来源明确标注为待深入；不将反思记作完整补查完成。

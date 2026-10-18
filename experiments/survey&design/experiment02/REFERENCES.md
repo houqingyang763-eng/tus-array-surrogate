@@ -182,3 +182,20 @@ Sun、Li、Su、Lin，*A viscoacoustic wave equation solver using modified Born 
 - P51/P54/P55 的超分辨率/局部峰压输出：按已有原文核查筛出本任务核心比较；输出差异比网络名称更重要。
 
 本轮未读取与比较无关的历史项目协议、未把论文版本的新公开时间当新算法，也未为了凑文献数给每条搜索命中分配编号。
+
+## 用户质疑后的漏项补查：入口已确认，深入比较未完成
+
+<a id="r24"></a>
+### R24 · P87–P91 · 会改变判断的强竞争方法
+
+以下为首轮真实漏项或未深入的关键后续工作。已先查统一索引，不宣称新方法发现；本次用于确认遗漏和纠正推理，尚未完成各自全部数值、实现和成本比较。不能把这5个入口计成5篇深入读完。
+
+| 编号与来源 | 本次核到哪里 | 为什么影响首轮取舍 | 尚需补什么 |
+| --- | --- | --- | --- |
+| **P87** Stolk、Ahmed、Bhowmik，*A multigrid method for the Helmholtz equation with optimized coarse grid corrections*，SISC36(6), A2819–A2841 (2014)，arXiv1304.4103。[正文](https://arxiv.org/html/1304.4103) | 引言、三维/边界处理与结论：对齐粗细相速，三维优化粗算子；粗层约3.5点的条件与细层分辨率不同；PML有针对性粗化 | 先进MG并非只有P76/P77；粗相位失配处理有成熟前序，原先10–12点比较不完整 | 细算子适配、平滑/粗解的总成本、三维强界面和边界条件、作者实现 |
+| **P88** Stolk，*A dispersion minimizing scheme for the 3-D Helmholtz equation based on ray theory*，arXiv1504.01609。[正文](https://arxiv.org/html/1504.01609) | 引言和§7附近：常系数/平滑介质5–6点传播例；两网格结合double-sweep粗逆，含三维盐丘测试 | 低点/波长及MG/扫描混合有具体研究，不能将6点条件仅作为MG迁移负面因素 | 精确版本和正式发表信息、异质跳变条件、准备/在线及原方程精度；不把光滑介质结论套给颅骨 |
+| **P89** Dwarka、Vuik，*Scalable multi-level deflation preconditioning for highly indefinite time-harmonic waves*，JCP469,111327 (2022)，DOI10.1016/j.jcp.2022.111327。[大学记录](https://repository.tudelft.nl/record/uuid%3Ac4014afa-f934-41e1-99e4-76f696fe8dd5)、[出版社](https://doi.org/10.1016/j.jcp.2022.111327) | 摘要、出版社§3.1–3.2方法片段：高阶粗基、递归deflation与CSLP/内层迭代组合 | 强基底不仅是给普通MG换平滑器；近零模式对齐和粗层成本还有一套完整传统解法 | 2D/3D范围、嵌套容差/运算、硬件与精度计时，及后续实现关系 |
+| **P90** Chen、Dwarka、Vuik，*Matrix-Free Parallel Scalable Multilevel Deflation Preconditioning for Heterogeneous Time-Harmonic Wave Problems*，JSC102,47 (2025)，arXiv2412.04980，DOI10.1007/s10915-024-02786-w。[正文](https://arxiv.org/html/2412.04980v1)、[大学记录](https://repository.tudelft.nl/record/uuid%3A687f0019-1b3c-41b9-bdbe-89bb8cb1e010) | 核元数据/摘要并定位正文，确认是P78之后独立的多层deflation工作 | 首轮读了P78基础CSLP却没追到后续更强组合，传统基底比较不完整 | 正文、数值表和实现尚需深入；当前不引用其速度作排序 |
+| **P91** Liu、Ghysels、Claus、Li，*Sparse Approximate Multifrontal Factorization with Butterfly Compression for High-Frequency Wave Equations*，SISC43(5),S367–S391 (2021)，DOI10.1137/20M1349667，arXiv2007.00202。[正文](https://arxiv.org/html/2007.00202)、[出版社](https://epubs.siam.org/doi/10.1137/20M1349667) | 摘要、引言及格式机制：针对高频振荡前沿矩阵，使用butterfly/complementary low-rank，区别于一般低秩压缩 | 用未压缩LU或一般低秩的扩展性来降级所有压缩因子不充分；它也可作迭代预条件 | 三维实际常数、因子准备/在线/内存、压缩误差和迭代成本，及当前变密度算子适配 |
+
+此处确认的是补查必要性，不提前认定这组方法优于Born或McMg。[报告第11节](REPORT.md#11-用户质疑后的反思哪些工作实际没有做完)列出补齐判断的要求。

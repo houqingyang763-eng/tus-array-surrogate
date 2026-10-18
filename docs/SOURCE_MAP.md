@@ -98,3 +98,21 @@
 
 V10阅读版来自稳定合同与exploration 01任务书；CURRENT_STATUS明确区分10-08历史基线、10-16本轮交付与10-18同步日期。
 原始历史结果/方法讨论仍在本地来源标识位置；本包只保存能解释当前取舍的最少数值和边界。
+
+## 2026-10-18 experiment02增量发布
+
+本地来源：`160f522a04cb297f6a272ceded04d51d56adddd7`；普通后续提交的远端父提交：`f852a10ae0e93594fe505138fa5fbe7a27e4dfae`。保留远端其他文件，只增加本轮报告/任务/证据与相关阅读导航，不上传完整本地历史或工作区改动。
+
+复制文件：
+
+- `docs/literature_seen_index.md`
+- `experiments/survey&design/README.md`
+- `experiments/survey&design/experiment02/AGENTS.md`
+- `experiments/survey&design/experiment02/MISSION.md`
+- `experiments/survey&design/experiment02/README.md`
+- `experiments/survey&design/experiment02/REFERENCES.md`
+- `experiments/survey&design/experiment02/REPORT.md`
+- `experiments/survey&design/experiment02/REVIEW.md`
+- `experiments/survey&design/experiment02/SEARCH_LOG.md`
+
+阅读导航更新：根README/AGENTS、专题AGENTS、docs地图与当前状态；科学合同、历史报告正文、代码和数据不变。

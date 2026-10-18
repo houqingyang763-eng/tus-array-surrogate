@@ -1,3 +1,9 @@
+# 当前资料入口
+
+2026-10-18当前调查为 [experiment02综合报告](../experiments/survey&design/experiment02/REPORT.md)；[关键文献](../experiments/survey&design/experiment02/REFERENCES.md)、[当前状态](CURRENT_STATUS.md)、[轮次地图](../experiments/survey&design/README.md)和[统一索引P01–P86](literature_seen_index.md)提供定位。
+
+下文保留前轮资料地图及其历史描述；稳定V10合同与本轮比较任务分开。
+
 # 资料地图
 
 更新：2026-10-18。先读[当前状态](CURRENT_STATUS.md)，再进入[当前轮次](<../experiments/survey&design/exploration 01/README.md>)。

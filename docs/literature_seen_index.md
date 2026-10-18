@@ -1,6 +1,6 @@
 # 已知论文与方向检索清单
 
-初始核对：2026-10-08；专题增量核查：2026-10-09—16。用途：讨论或检索新方向前先查重；允许重访和借鉴，但应明确说出“已有方向 + 本次新增内容”。
+初始核对：2026-10-08；专题增量核查：2026-10-09—18。用途：讨论或检索新方向前先查重；允许重访和借鉴，但应明确说出“已有方向 + 本次新增内容”。
 
 ## 给 GPT / Codex 的使用规则
 
@@ -37,12 +37,14 @@
 | 相位周期性、圆周分类、少样本适配 | P15 | 阵元控制量与体素相位；是否使用测试颅骨适配 |
 | 多损失、梯度量级、PCGrad、任务共享/拆分 | P18–P20 | 量级失衡、方向冲突和负迁移分别处理 |
 | 扩散 U-Net、scale-shift 条件化、分类器引导 | P21 | 图像生成指标与确定性物理场误差的区别 |
-| 学习迭代器、神经预条件、FGMRES、多重网格 | P09、P26–P27、P46–P49、P59 | 经颅先例已到2022学位论文；迭代次数、完整时间与复场误差分开 |
+| 学习迭代器、神经预条件、FGMRES、多重网格 | P09、P26–P27、P46–P49、P59、P76–P78 | 经颅先例已到2022学位论文；传统强MG已有新改进；迭代次数、完整时间与复场误差分开 |
 | 学习延拓、近零子空间、deflation、Petrov–Galerkin | P60–P61、P63–P65、P70 | SPD/不定适用条件；近零样本矩阵与物理A的奇异空间分开 |
 | 界面条件、Schwarz、Schur、DtN、辅助状态 | P62、P66–P67、P72、W02 | 学习什么未知量；预训练残差校正与逐题求网络权重分开 |
 | 散射分解、HINTS散射、双端口、相容空间 | P68–P69、P71、P73 | 原方程残差与场差值分开；端口组合和结构相容本身已有先例 |
 | 粗仿真+超分辨率、坐标算子、局部峰压 | P51、P54–P55 | 真3D/未见颅骨仍不等于复场；网络前向与粗仿真总时间分开 |
 | Label 基准、物理验证、声电应用、逆向导航 | P14、P22、P24 | 仿真可信度、下游应用与场预测分开 |
+| 传统Born、快速传播、时频桥接、压缩直接解 | P45、P53、P57、P74–P85 | 单配置总场与独立多RHS分开；计入源处理、介质准备及离散/边界条件 |
+| 三维域分解、OSM/ORAS、扫描、谱粗空间 | P66、P75、P79–P81、P86 | 局部因子可复用；批量吞吐不直接迁移；真算子中的近似与预条件近似分开 |
 
 ## 研究条目清单
 
@@ -393,6 +395,8 @@ P/S 波速 + 复体力源 + 频率→三分量复位移；U 形神经算子预�
 
 **Numerical Validation of mSOUND Using Fully Heterogeneous Skull Models**；DOI 10.1109/OJUFFC.2026.3677158，PMID41971001。**摘要登记。**真实异质颅骨快速传统传播验证，非学习先例；焦域精度和速度声明不等于全复场形状误差。本轮不凭摘要做公平基线定量。[NCBI](https://pubmed.ncbi.nlm.nih.gov/41971001/)。
 
+2026-10-18 experiment02补全文：经公开作者稿XML核查§II–V、表1，属于已知论文深化。ESSF单向传播/有限反射，平面输入需FOCUS；4片段来自2名受试者。0.5 mm时源平面287.77 s+传播36.45 s，k-Wave CPU3646.48 s；全文指标主要是幅值/焦域，非当前Re/Im形状。[证据与条件](../experiments/survey&design/experiment02/REFERENCES.md#r06)。
+
 ### P58 · Seo等 · 2026主动学习声透镜优化
 
 **Optimization of Acoustic Lens Design for Transcranial Holographic Ultrasound using an Active Learning-Based Genetic Algorithm**；DOI 10.1093/jcde/qwag077，2026-09-18在线。**出版社摘要登记。**透镜几何→聚焦性能代理，主动学习接遗传算法，目标是逆设计；不计正向复场学习求解先例。[出版社](https://academic.oup.com/jcde/advance-article/doi/10.1093/jcde/qwag077/8817259?searchresult=1)。
@@ -460,6 +464,62 @@ P/S 波速 + 复体力源 + 频率→三分量复位移；U 形神经算子预�
 ### P73 · de Rham兼容DNN-FEM · 2023
 
 **De Rham compatible Deep Neural Network FEM**；DOI10.1016/j.neunet.2023.06.008。**只核出版社摘要**：最低阶de Rham有限元空间的精确神经表示；不作声学迭代性能判断。[出版社](https://www.sciencedirect.com/science/article/pii/S0893608023003088)。
+
+## 2026-10-18 experiment02：传统强基底与网络接入比较
+
+P74–P86为13个新登记编号，合计86个编号；不等于86份独立实证。均为已有Born/MG/DD/时频求解家族的延伸或补录，不宣称全项目首次发现。P57升级全文；其他已知论文的本轮补查见[证据入口](../experiments/survey&design/experiment02/REFERENCES.md)及[检索记录](../experiments/survey&design/experiment02/SEARCH_LOG.md)。仅文献研究，无服务器/实验/Zotero操作。
+
+### P74 · 收敛Born原始机制 · Osnabrugge等 · JCP2016
+
+**A convergent Born series for solving the inhomogeneous Helmholtz equation in arbitrarily large media**；arXiv1601.05997，DOI10.1016/j.jcp.2016.06.034。定向读§2–4：收敛迭代、FFT背景逆和反差相关伪传播。与只保留单次散射的Born近似分开。[原文](https://arxiv.org/html/1601.05997)、[本轮定位](../experiments/survey&design/experiment02/REFERENCES.md#r03)。
+
+### P75 · 域分解MBS · Mache/Vellekoop · 2024预印本/后续JCP
+
+**Domain decomposition of the modified Born series approach for large-scale wave propagation simulations**；arXiv2410.02395v3（2025-10-16），期刊同题归并。§3–4：多GPU局部FFT加边界耦合，拆分增加缩放保守性/迭代；标量光学算例。v1摘要379 s不与v3大算例2730 s混用。[v3](https://arxiv.org/html/2410.02395v3)、[证据](../experiments/survey&design/experiment02/REFERENCES.md#r05)。
+
+### P76 · Vanka-SL-MG · Yovel/He/Treister · 2025预印本
+
+**Vanka-smoothed shifted Laplacian multigrid preconditioners for the Helmholtz equations**；arXiv2511.16808v2。§3–5、表6：小块平滑降低所需移位，含三维Overthrust和作者Julia实现；10点/波长、CPU，三层与深层循环的收益不同。[正文](https://arxiv.org/html/2511.16808v2)、[证据](../experiments/survey&design/experiment02/REFERENCES.md#r07)。
+
+### P77 · RS-CGC · Yovel/Treister · 2026预印本
+
+**Scalable Multigrid Solver for the Helmholtz Equation: Real-Shifted Coarse Grid Correction**；arXiv2604.19501v1。§3–5：高阶网格转移与最粗Galerkin实移位对齐色散，三维约272万自由度10次迭代；10–12点/波长、粗解与临界规模条件不直接覆盖当前6点/波长。[正文](https://arxiv.org/html/2604.19501v1)、[证据](../experiments/survey&design/experiment02/REFERENCES.md#r08)。
+
+### P78 · 三维matrix-free CSLP · Chen/Dwarka/Vuik · ETNA2023
+
+**A matrix-free parallel solution method for the three-dimensional heterogeneous Helmholtz equation**；arXiv2308.06085，DOI10.1553/etna_vol59s270。§3–5：CSLP+三维MG，含IDR(4)/GMRES等和CPU并行大域；真三维基底能力，非GPU速度承诺。[正文](https://arxiv.org/html/2308.06085v1)、[证据](../experiments/survey&design/experiment02/REFERENCES.md#r09)。
+
+### P79 · OSM/ORAS成本比较 · Martin/Jolivet/Geuzaine · 2025预印本
+
+**Comparison of substructured non-overlapping domain decomposition and overlapping additive Schwarz methods for large-scale Helmholtz problems with multiple sources**；arXiv2506.16875v1。§3–5：全域预条件与界面真算子不同，三维CPU内存/分解/正交化/批RHS计时；不把64个独立RHS当本任务一份总场。[正文](https://arxiv.org/html/2506.16875v1)、[证据](../experiments/survey&design/experiment02/REFERENCES.md#r10)。
+
+### P80 · L-Sweeps · Taus等 · JCP2020
+
+**L-Sweeps: A scalable, parallel preconditioner for the high-frequency Helmholtz equation**；arXiv1909.01467。§3–5：棋盘扫描、局部因子和全局GMRES；含2D/3D，反射影响次数；公开所查仓库为2D。已有P66家族延伸。[正文](https://arxiv.org/html/1909.01467)、[证据](../experiments/survey&design/experiment02/REFERENCES.md#r11)。
+
+### P81 · 三维polarized traces · Zepeda-Núñez等 · 2018预印本
+
+**The method of polarized traces for the 3D Helmholtz equation**；arXiv1801.08655。§1.1、§2–4：介质离线准备与在线求解分离，批源流水线有并行/源数条件。已有扫描方向延伸，不计独立新机制。[正文](https://arxiv.org/html/1801.08655)、[证据](../experiments/survey&design/experiment02/REFERENCES.md#r11)。
+
+### P82 · WaveHoltz · Appelö/Garcia/Runborg · SISC2020
+
+**WaveHoltz: Iterative Solution of the Helmholtz Equation via the Wave Equation**；arXiv1910.10148。§2、§2.5、§4.3：短时受迫传播、滤波、Krylov，原版有阻抗边界及三维；正定/对称条件按原问题，不任意搬给PML。[正文](https://arxiv.org/html/1910.10148)、[证据](../experiments/survey&design/experiment02/REFERENCES.md#r12)。
+
+### P83 · Multi-Frequency WaveHoltz · Appelö等 · 2025预印本
+
+**A Multi-Frequency Helmholtz Solver Based on the WaveHoltz Algorithm**；arXiv2507.23613v1。§1/3–4：一次波传播配多滤波器，实验限简单能量守恒闭域；不是本轮单频总场优势的直接证据，也不据此否定P82开域能力。[正文](https://arxiv.org/html/2507.23613v1)、[证据](../experiments/survey&design/experiment02/REFERENCES.md#r12)。
+
+### P84 · 插值伪微分预条件 · Acosta/Khajah/Palacios · SISC2025
+
+**A new interpolated pseudodifferential preconditioner for the Helmholtz equation in heterogeneous media**；arXiv2409.16172v2，DOI10.1137/24M1642184。§4–6：声速一维插值FFT逆符号，二维合成头模；尖锐界面/独立衰减/PML扩展边界明确。降级为低setup比较线索。[正文](https://arxiv.org/html/2409.16172v2)、[证据](../experiments/survey&design/experiment02/REFERENCES.md#r20)。
+
+### P85 · GPU压缩直接解 · Claus等 · IJHPCA2025
+
+**A graphics processing unit accelerated sparse direct solver and preconditioner with block low rank compression**；DOI10.1177/10943420241288567。仅核出版社摘要/作者实现定位：STRUMPACK多前沿近似因子与GPU支持，不据未读数值表作当前速度或内存判断。[出版社](https://journals.sagepub.com/doi/10.1177/10943420241288567)、[证据](../experiments/survey&design/experiment02/REFERENCES.md#r21)。
+
+### P86 · Hk-GenEO · Dolean/Fry/Graham/Langer · 2024预印本
+
+**Schwarz preconditioner with Hk-GenEO coarse space for the indefinite Helmholtz problem**；arXiv2406.06283v1。定向读问题、谱粗空间和理论部分；数值未逐表抽取。说明不定Helmholtz有传统谱粗空间竞争，未作为三维经颅性能证据。[正文](https://arxiv.org/html/2406.06283v1)、[证据](../experiments/survey&design/experiment02/REFERENCES.md#r22)。
 
 ## 非论文网页（保留查重，不计入研究条目总数）
 

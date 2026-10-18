@@ -1,20 +1,23 @@
-# 经颅复声场：当前探索与历史资料
+# 三维总复声场求解：当前调查与历史资料
 
-阅读资料更新：2026-10-18。本仓库main是供GPT阅读的精选研究资料；当前为 **exploration 01：真实物理残差迭代中的学习加速机制创新**。
+更新：2026-10-18。main 是供 GPT 阅读的精选资料。当前轮次为 **experiment02：传统求解路线、强迭代基底与神经网络接入位置比较**，已完成文献调查与综合报告。
 
-## 给GPT的阅读顺序
+## 阅读顺序
 
-1. [当前状态](docs/CURRENT_STATUS.md)：本轮完成了什么、候选处于什么阶段。
-2. [工作规则](<experiments/survey&design/exploration 01/AGENTS.md>) → [任务书](<experiments/survey&design/exploration 01/MISSION.md>) → [判断标准](<experiments/survey&design/exploration 01/REVIEW.md>)。
-3. [首轮综合判断](<experiments/survey&design/exploration 01/SYNTHESIS.md>) → [唯一保留候选的计算设计](<experiments/survey&design/exploration 01/coupled_interface/DESIGN.md>)。
-4. 按问题回查[论文索引](docs/literature_seen_index.md)、[原文笔记](<experiments/survey&design/exploration 01/papers/README.md>)、[机制查重](<experiments/survey&design/exploration 01/idea查重/REPORT.md>)和[V10合同](docs/project_design_handoff_v10.md)。
+1. [综合报告](experiments/survey&design/experiment02/REPORT.md)：先给推荐，覆盖传统大路线、完整强基底、网络接入、换介质与三维成本。
+2. [关键证据](experiments/survey&design/experiment02/REFERENCES.md)：23组来源、原文章节/表格、读取深度和迁移条件。
+3. [任务书](experiments/survey&design/experiment02/MISSION.md)与[评审要求](experiments/survey&design/experiment02/REVIEW.md)：本轮比较的任务与验收条件。
+4. 按需看[检索记录](experiments/survey&design/experiment02/SEARCH_LOG.md)、[统一文献索引](docs/literature_seen_index.md)和[当前状态](docs/CURRENT_STATUS.md)。
 
-## 两轮资料
+本轮配置为可更换介质、临时多个同频源共同作用、交付一份总复场形状；源数不是独立求解次数。该目标停留在比较研究层面，不修改既有V10单源接口、Label或已运行实验。
 
-- [exploration 01：当前轮次](<experiments/survey&design/exploration 01/README.md>)：创新标准、检索查重、候选设计、成本与验证方案。
-- [exploration00：上一轮归档](experiments/survey&design/exploration00/README.md)：广泛架构调研、M0、McMg深化和早期经颅Idea查重；保留历史日期与判断。
-- [资料地图](docs/README.md)与[来源地图](docs/SOURCE_MAP.md)。
+## 研究结论与状态
 
-解释时区分论文事实、历史实验、工程检查和待验证构想。当前保留的界面校正候选尚未训练或实测；旧M0及其四秒训练目标不自动继承为本轮结论或推理门槛。
+优先以变密度Born作数值参照，认真比较近期改进多重网格，条件性保留传播感知域分解；mSOUND类快速传播作为有输入几何限制的支线。学习加速优先介质准备/缓存与残差校正分离。这些是有文献依据的选择，尚无本任务新增计算实测。
 
-本仓库不是完整训练代码/数据发布。Label、checkpoint、完整日志、服务器配置与个人Todo保留在原存储位置。
+- [当前experiment02](experiments/survey&design/experiment02/README.md)。
+- [前轮exploration 01](<experiments/survey&design/exploration 01/README.md>)：创新机制探索与未验证界面候选，保留为历史研究。
+- [更早exploration00](experiments/survey&design/exploration00/README.md)：架构、M0、McMg深化与早期查重。
+- [资料地图](docs/README.md)、[来源地图](docs/SOURCE_MAP.md)和[V10科学合同](docs/project_design_handoff_v10.md)。
+
+文献事实、迁移分析、工程检查和科学结果分别解释。完整代码、数据、checkpoint、服务器配置和个人Todo不随阅读快照发布。

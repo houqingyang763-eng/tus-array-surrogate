@@ -1,11 +1,11 @@
 # 来源地图与发布范围
 
-资料包日期：2026-10-10。内容提炼/复制自本地研究仓库；它没有修改本地科学合同、历史结果或用户Todo。
+资料包日期：2026-10-18。内容提炼/复制自本地研究仓库；它没有修改本地科学合同、历史结果或用户Todo。
 
-- 本地来源提交：`c56c028437a583d8dac7515d3474a81295140dde`。另有已明确选取的现存工作区材料；没有整仓上传未提交改动。
-- 远端父提交：`9ba4b9e276a3a0268646b1383a703344c8a8a0b1`。发布是普通后续提交，保留Git历史。
+- 本地来源提交：`eb58625ba9a6126971ffdd3c02190638b6413471`。另有已明确选取的现存工作区材料；没有整仓上传未提交改动。
+- 远端父提交：`d858fb9a7b362cd36b27dd00169805edc42d104b`。发布是普通后续提交，保留Git历史。
 - V10三文件为阅读版：稳定合同与最新基线分开，去掉旧阶段机器状态。
-- 论文报告保留原日期与阅读边界；survey正文保留，依赖链接改为本包证据摘要。
+- exploration00归档上一轮；exploration 01为当前轮次。保留原日期与正文，只修复导出链接，依赖按需映射到阅读证据。
 - 未发布：V1–V9旧构想/旧运行目录、服务器/CONTROL、个人Todo、完整代码/数据/checkpoint/日志、PDF原文和二进制产物。
 
 ## 直接复制的来源
@@ -16,35 +16,63 @@
 | `docs/zotero_cross_paper_comparison_20260930.md` | `docs/zotero_cross_paper_comparison_20260930.md` |
 | `docs/zotero_contribution_venue_analysis_20261001.md` | `docs/zotero_contribution_venue_analysis_20261001.md` |
 | `experiments/survey&design/AGENTS.md` | `experiments/survey&design/AGENTS.md` |
-| `experiments/survey&design/calculations/costs.json` | `experiments/survey&design/calculations/costs.json` |
-| `experiments/survey&design/COSTS.md` | `experiments/survey&design/COSTS.md` |
-| `experiments/survey&design/medium_source/DESIGN.md` | `experiments/survey&design/medium_source/DESIGN.md` |
-| `experiments/survey&design/medium_source/papers/README.md` | `experiments/survey&design/medium_source/papers/README.md` |
-| `experiments/survey&design/medium_source/README.md` | `experiments/survey&design/medium_source/README.md` |
-| `experiments/survey&design/medium_source/VALIDATION.md` | `experiments/survey&design/medium_source/VALIDATION.md` |
-| `experiments/survey&design/MISSION.md` | `experiments/survey&design/MISSION.md` |
-| `experiments/survey&design/phase_space/DESIGN.md` | `experiments/survey&design/phase_space/DESIGN.md` |
-| `experiments/survey&design/phase_space/papers/README.md` | `experiments/survey&design/phase_space/papers/README.md` |
-| `experiments/survey&design/phase_space/README.md` | `experiments/survey&design/phase_space/README.md` |
-| `experiments/survey&design/phase_space/VALIDATION.md` | `experiments/survey&design/phase_space/VALIDATION.md` |
-| `experiments/survey&design/physical_iteration/DESIGN.md` | `experiments/survey&design/physical_iteration/DESIGN.md` |
-| `experiments/survey&design/physical_iteration/papers/README.md` | `experiments/survey&design/physical_iteration/papers/README.md` |
-| `experiments/survey&design/physical_iteration/README.md` | `experiments/survey&design/physical_iteration/README.md` |
-| `experiments/survey&design/physical_iteration/VALIDATION.md` | `experiments/survey&design/physical_iteration/VALIDATION.md` |
+| `experiments/survey&design/exploration 01/AGENTS.md` | `experiments/survey&design/exploration 01/AGENTS.md` |
+| `experiments/survey&design/exploration 01/COSTS.md` | `experiments/survey&design/exploration 01/COSTS.md` |
+| `experiments/survey&design/exploration 01/coupled_interface/DESIGN.md` | `experiments/survey&design/exploration 01/coupled_interface/DESIGN.md` |
+| `experiments/survey&design/exploration 01/coupled_interface/papers/README.md` | `experiments/survey&design/exploration 01/coupled_interface/papers/README.md` |
+| `experiments/survey&design/exploration 01/coupled_interface/README.md` | `experiments/survey&design/exploration 01/coupled_interface/README.md` |
+| `experiments/survey&design/exploration 01/coupled_interface/VALIDATION.md` | `experiments/survey&design/exploration 01/coupled_interface/VALIDATION.md` |
+| `experiments/survey&design/exploration 01/idea查重/AGENTS.md` | `experiments/survey&design/exploration 01/idea查重/AGENTS.md` |
+| `experiments/survey&design/exploration 01/idea查重/REPORT.md` | `experiments/survey&design/exploration 01/idea查重/REPORT.md` |
+| `experiments/survey&design/exploration 01/idea查重/SEARCH_LOG.md` | `experiments/survey&design/exploration 01/idea查重/SEARCH_LOG.md` |
+| `experiments/survey&design/exploration 01/idea查重/查重要求.md` | `experiments/survey&design/exploration 01/idea查重/查重要求.md` |
+| `experiments/survey&design/exploration 01/MISSION.md` | `experiments/survey&design/exploration 01/MISSION.md` |
+| `experiments/survey&design/exploration 01/papers/README.md` | `experiments/survey&design/exploration 01/papers/README.md` |
+| `experiments/survey&design/exploration 01/README.md` | `experiments/survey&design/exploration 01/README.md` |
+| `experiments/survey&design/exploration 01/REVIEW.md` | `experiments/survey&design/exploration 01/REVIEW.md` |
+| `experiments/survey&design/exploration 01/SEARCH_LOG.md` | `experiments/survey&design/exploration 01/SEARCH_LOG.md` |
+| `experiments/survey&design/exploration 01/SYNTHESIS.md` | `experiments/survey&design/exploration 01/SYNTHESIS.md` |
+| `experiments/survey&design/exploration 01/VALIDATION.md` | `experiments/survey&design/exploration 01/VALIDATION.md` |
+| `experiments/survey&design/exploration00/AGENTS.md` | `experiments/survey&design/exploration00/AGENTS.md` |
+| `experiments/survey&design/exploration00/calculations/costs.json` | `experiments/survey&design/exploration00/calculations/costs.json` |
+| `experiments/survey&design/exploration00/COSTS.md` | `experiments/survey&design/exploration00/COSTS.md` |
+| `experiments/survey&design/exploration00/idea查重/AGENTS.md` | `experiments/survey&design/exploration00/idea查重/AGENTS.md` |
+| `experiments/survey&design/exploration00/idea查重/REPORT.md` | `experiments/survey&design/exploration00/idea查重/REPORT.md` |
+| `experiments/survey&design/exploration00/idea查重/SEARCH_LOG.md` | `experiments/survey&design/exploration00/idea查重/SEARCH_LOG.md` |
+| `experiments/survey&design/exploration00/idea查重/查重要求.md` | `experiments/survey&design/exploration00/idea查重/查重要求.md` |
+| `experiments/survey&design/exploration00/McMg线/DESIGN.md` | `experiments/survey&design/exploration00/McMg线/DESIGN.md` |
+| `experiments/survey&design/exploration00/McMg线/papers/born_density_2025.md` | `experiments/survey&design/exploration00/McMg线/papers/born_density_2025.md` |
+| `experiments/survey&design/exploration00/McMg线/papers/README.md` | `experiments/survey&design/exploration00/McMg线/papers/README.md` |
+| `experiments/survey&design/exploration00/McMg线/README.md` | `experiments/survey&design/exploration00/McMg线/README.md` |
+| `experiments/survey&design/exploration00/McMg线/VALIDATION.md` | `experiments/survey&design/exploration00/McMg线/VALIDATION.md` |
+| `experiments/survey&design/exploration00/medium_source/DESIGN.md` | `experiments/survey&design/exploration00/medium_source/DESIGN.md` |
+| `experiments/survey&design/exploration00/medium_source/papers/README.md` | `experiments/survey&design/exploration00/medium_source/papers/README.md` |
+| `experiments/survey&design/exploration00/medium_source/README.md` | `experiments/survey&design/exploration00/medium_source/README.md` |
+| `experiments/survey&design/exploration00/medium_source/VALIDATION.md` | `experiments/survey&design/exploration00/medium_source/VALIDATION.md` |
+| `experiments/survey&design/exploration00/MISSION.md` | `experiments/survey&design/exploration00/MISSION.md` |
+| `experiments/survey&design/exploration00/phase_space/DESIGN.md` | `experiments/survey&design/exploration00/phase_space/DESIGN.md` |
+| `experiments/survey&design/exploration00/phase_space/papers/README.md` | `experiments/survey&design/exploration00/phase_space/papers/README.md` |
+| `experiments/survey&design/exploration00/phase_space/README.md` | `experiments/survey&design/exploration00/phase_space/README.md` |
+| `experiments/survey&design/exploration00/phase_space/VALIDATION.md` | `experiments/survey&design/exploration00/phase_space/VALIDATION.md` |
+| `experiments/survey&design/exploration00/physical_iteration/DESIGN.md` | `experiments/survey&design/exploration00/physical_iteration/DESIGN.md` |
+| `experiments/survey&design/exploration00/physical_iteration/papers/README.md` | `experiments/survey&design/exploration00/physical_iteration/papers/README.md` |
+| `experiments/survey&design/exploration00/physical_iteration/README.md` | `experiments/survey&design/exploration00/physical_iteration/README.md` |
+| `experiments/survey&design/exploration00/physical_iteration/VALIDATION.md` | `experiments/survey&design/exploration00/physical_iteration/VALIDATION.md` |
+| `experiments/survey&design/exploration00/README.md` | `experiments/survey&design/exploration00/README.md` |
+| `experiments/survey&design/exploration00/REVIEW.md` | `experiments/survey&design/exploration00/REVIEW.md` |
+| `experiments/survey&design/exploration00/scripts/cost_model.py` | `experiments/survey&design/exploration00/scripts/cost_model.py` |
+| `experiments/survey&design/exploration00/SEARCH_LOG.md` | `experiments/survey&design/exploration00/SEARCH_LOG.md` |
+| `experiments/survey&design/exploration00/source_kernel/DESIGN.md` | `experiments/survey&design/exploration00/source_kernel/DESIGN.md` |
+| `experiments/survey&design/exploration00/source_kernel/papers/README.md` | `experiments/survey&design/exploration00/source_kernel/papers/README.md` |
+| `experiments/survey&design/exploration00/source_kernel/README.md` | `experiments/survey&design/exploration00/source_kernel/README.md` |
+| `experiments/survey&design/exploration00/source_kernel/VALIDATION.md` | `experiments/survey&design/exploration00/source_kernel/VALIDATION.md` |
+| `experiments/survey&design/exploration00/spatial_state/DESIGN.md` | `experiments/survey&design/exploration00/spatial_state/DESIGN.md` |
+| `experiments/survey&design/exploration00/spatial_state/papers/README.md` | `experiments/survey&design/exploration00/spatial_state/papers/README.md` |
+| `experiments/survey&design/exploration00/spatial_state/README.md` | `experiments/survey&design/exploration00/spatial_state/README.md` |
+| `experiments/survey&design/exploration00/spatial_state/VALIDATION.md` | `experiments/survey&design/exploration00/spatial_state/VALIDATION.md` |
+| `experiments/survey&design/exploration00/SYNTHESIS.md` | `experiments/survey&design/exploration00/SYNTHESIS.md` |
+| `experiments/survey&design/exploration00/VALIDATION.md` | `experiments/survey&design/exploration00/VALIDATION.md` |
 | `experiments/survey&design/README.md` | `experiments/survey&design/README.md` |
-| `experiments/survey&design/REVIEW.md` | `experiments/survey&design/REVIEW.md` |
-| `experiments/survey&design/scripts/cost_model.py` | `experiments/survey&design/scripts/cost_model.py` |
-| `experiments/survey&design/SEARCH_LOG.md` | `experiments/survey&design/SEARCH_LOG.md` |
-| `experiments/survey&design/source_kernel/DESIGN.md` | `experiments/survey&design/source_kernel/DESIGN.md` |
-| `experiments/survey&design/source_kernel/papers/README.md` | `experiments/survey&design/source_kernel/papers/README.md` |
-| `experiments/survey&design/source_kernel/README.md` | `experiments/survey&design/source_kernel/README.md` |
-| `experiments/survey&design/source_kernel/VALIDATION.md` | `experiments/survey&design/source_kernel/VALIDATION.md` |
-| `experiments/survey&design/spatial_state/DESIGN.md` | `experiments/survey&design/spatial_state/DESIGN.md` |
-| `experiments/survey&design/spatial_state/papers/README.md` | `experiments/survey&design/spatial_state/papers/README.md` |
-| `experiments/survey&design/spatial_state/README.md` | `experiments/survey&design/spatial_state/README.md` |
-| `experiments/survey&design/spatial_state/VALIDATION.md` | `experiments/survey&design/spatial_state/VALIDATION.md` |
-| `experiments/survey&design/SYNTHESIS.md` | `experiments/survey&design/SYNTHESIS.md` |
-| `experiments/survey&design/VALIDATION.md` | `experiments/survey&design/VALIDATION.md` |
 
 ## 旧证据依赖的精简替代
 
@@ -63,6 +91,10 @@
 | `experiments/route_v8_extracranial_source/crazy/reviewer/novelty_landscape.md` | [证据摘要](literature/known_direction_notes.md#landscape) |
 | `experiments/route_v8_extracranial_source/crazy/research/agent_architecture_operator.md` | [证据摘要](literature/known_direction_notes.md#mifno) |
 | `docs/phase_amplitude_factorization_design_20260929.md` | [证据摘要](literature/known_direction_notes.md#phase) |
+| `experiments/route_v8_extracranial_source/mida_single_cell_label_v0/config/mida_medium_v0.json` | [证据摘要](evidence/frequency_solver.md#medium) |
+| `experiments/route_v8_extracranial_source/mida_single_cell_label_v0/matlab/run_prepare_mida_medium_v0.m` | [证据摘要](evidence/frequency_solver.md#medium) |
+| `experiments/route_v8_extracranial_source/mida_single_cell_label_v0/matlab/+mida_v0/buildIsotropicPointSource.m` | [证据摘要](evidence/frequency_solver.md#source) |
+| `experiments/route_v8_extracranial_source/mida_single_cell_label_v0/matlab/+mida_v0/extractComplexCw.m` | [证据摘要](evidence/frequency_solver.md#source) |
 
-三份V10阅读版来自本地同名文件、decisions及survey MISSION；CURRENT_STATUS复用截至10-08基线和10-09—10调研交付。
+V10阅读版来自稳定合同与exploration 01任务书；CURRENT_STATUS明确区分10-08历史基线、10-16本轮交付与10-18同步日期。
 原始历史结果/方法讨论仍在本地来源标识位置；本包只保存能解释当前取舍的最少数值和边界。

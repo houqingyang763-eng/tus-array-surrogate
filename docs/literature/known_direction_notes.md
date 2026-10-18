@@ -1,6 +1,6 @@
 # 已讨论方向的短索引
 
-用于查重，不重发旧V8/V9整套设计或恢复旧目标。对应本地旧材料路径在[SOURCE_MAP](../SOURCE_MAP.md)；当前方案/证据以[架构综合判断](../../experiments/survey&design/SYNTHESIS.md)为准。
+用于查重，不重发旧V8/V9整套设计或恢复旧目标。对应本地旧材料路径在[SOURCE_MAP](../SOURCE_MAP.md)；当前方案/证据以[架构综合判断](../../experiments/survey&design/exploration00/SYNTHESIS.md)为准。
 
 <a id="catalog"></a>
 ## 架构组件先例

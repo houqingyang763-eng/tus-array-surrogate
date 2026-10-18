@@ -1,19 +1,20 @@
-# 经颅复声场预测：V10研究资料
+# 经颅复声场：当前探索与历史资料
 
-这是供GPT网页版读取的精简资料快照，整理日期2026-10-10。当前研究：固定MIDA、500 kHz、可变颅外单点源，预测大三维ROI内颅内Re/Im复声场形状。
+阅读资料更新：2026-10-18。本仓库main是供GPT阅读的精选研究资料；当前为 **exploration 01：真实物理残差迭代中的学习加速机制创新**。
 
-## 给GPT的最短阅读顺序
+## 给GPT的阅读顺序
 
-1. [当前状态与Codex已完成工作](docs/CURRENT_STATUS.md)：项目现在研究什么、已有结果、新设计处于什么阶段。
-2. [V10科学合同](docs/project_design_handoff_v10.md)：输入输出、数据、评价与保留的边界。
-3. [本轮架构综合判断](experiments/survey&design/SYNTHESIS.md)：论文怎样改变取舍，主候选为什么这样设计。
-4. 按问题读取[论文索引](docs/literature_seen_index.md)、[M0设计](experiments/survey&design/medium_source/DESIGN.md)或[验证方案](experiments/survey&design/VALIDATION.md)。
+1. [当前状态](docs/CURRENT_STATUS.md)：本轮完成了什么、候选处于什么阶段。
+2. [工作规则](<experiments/survey&design/exploration 01/AGENTS.md>) → [任务书](<experiments/survey&design/exploration 01/MISSION.md>) → [判断标准](<experiments/survey&design/exploration 01/REVIEW.md>)。
+3. [首轮综合判断](<experiments/survey&design/exploration 01/SYNTHESIS.md>) → [唯一保留候选的计算设计](<experiments/survey&design/exploration 01/coupled_interface/DESIGN.md>)。
+4. 按问题回查[论文索引](docs/literature_seen_index.md)、[原文笔记](<experiments/survey&design/exploration 01/papers/README.md>)、[机制查重](<experiments/survey&design/exploration 01/idea查重/REPORT.md>)和[V10合同](docs/project_design_handoff_v10.md)。
 
-## 目录
+## 两轮资料
 
-- [docs](docs/README.md)：V10、已读论文、最少必要证据及来源地图。
-- [experiments/survey&design](experiments/survey&design/README.md)：调研任务书、审查规则、五个方向的论文/设计/验证与解析成本。
+- [exploration 01：当前轮次](<experiments/survey&design/exploration 01/README.md>)：创新标准、检索查重、候选设计、成本与验证方案。
+- [exploration00：上一轮归档](experiments/survey&design/exploration00/README.md)：广泛架构调研、M0、McMg深化和早期经颅Idea查重；保留历史日期与判断。
+- [资料地图](docs/README.md)与[来源地图](docs/SOURCE_MAP.md)。
 
-解释时分别说清：已有运行事实、论文结果、诊断线索、候选假设。新M0尚未训练，82.15 GMAC是解析前向核心运算量，4 s完整五卡更新尚待实测；基线引用截至2026-10-08记录，不代表实时服务器状态。
+解释时区分论文事实、历史实验、工程检查和待验证构想。当前保留的界面校正候选尚未训练或实测；旧M0及其四秒训练目标不自动继承为本轮结论或推理门槛。
 
-本分支展示部分研究资料，完整代码、历史实验、Label/checkpoint、日志和用户Todo保留在本地或原存储位置。旧版本与旧实验从当前目录清理，Git历史仍保留。导出取舍与来源见[来源地图](docs/SOURCE_MAP.md)。
+本仓库不是完整训练代码/数据发布。Label、checkpoint、完整日志、服务器配置与个人Todo保留在原存储位置。

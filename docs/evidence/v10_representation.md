@@ -27,4 +27,4 @@
 
 best改善1.82%，4/8源改善，原>10%且≥6/8门未通过；train仍欠拟合，单seed/临时probe，抽样仅约.602全场等价遍历（含重复）。它降低当前目标变换实现的投入，不排序整个相位先验家族，也不代表正式holdout高精度。
 
-下一步确定性源轴诊断：比较u(g)与q(g)的邻源变化/插值以及载波相位转移，区分表示与源映射。[方向验证](../../experiments/survey&design/phase_space/VALIDATION.md)。
+下一步确定性源轴诊断：比较u(g)与q(g)的邻源变化/插值以及载波相位转移，区分表示与源映射。[方向验证](../../experiments/survey&design/exploration00/phase_space/VALIDATION.md)。

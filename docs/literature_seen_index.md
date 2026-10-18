@@ -1,6 +1,6 @@
 # 已知论文与方向检索清单
 
-初始核对：2026-10-08；专题增量核查：2026-10-09—10。用途：讨论或检索新方向前先查重；允许重访和借鉴，但应明确说出“已有方向 + 本次新增内容”。
+初始核对：2026-10-08；专题增量核查：2026-10-09—16。用途：讨论或检索新方向前先查重；允许重访和借鉴，但应明确说出“已有方向 + 本次新增内容”。
 
 ## 给 GPT / Codex 的使用规则
 
@@ -14,11 +14,15 @@
 
 - 实时读取 Zotero `tus_surrogate`（`29BGBFP3`）及全部 7 个子收藏夹：28 个不同顶层条目；3 个重复条目合并后，得到 24 篇论文 + 1 个非论文网页。各收藏夹均核对 API 总条数，无分页遗漏。
 - 与 [2026-09-30 跨论文比较](zotero_cross_paper_comparison_20260930.md) 的 24 篇取并集：**27 篇论文**。旧报告中的 Fourier Features、Aubry 基准、Zhang 颅内定位这 3 篇目前未在上述收藏夹内，仍保留。
-- P01–P24 的概览与边界压缩自旧报告对应 A/B/C 条目，本次未重新核验全文；P25–P27 仅据当前 Zotero 元数据与摘要。年份在预印本和正式版之间可能不同，按所列来源口径保留。
+- P01–P24 的初始概览与边界压缩自旧报告对应 A/B/C 条目；P25–P27 初始仅据 Zotero 元数据与摘要。后续正文核查以各条目的增量为准。年份在预印本和正式版之间可能不同，按所列来源口径保留。
 - `Z=` 为 Zotero 条目 key，可用 `zotero://select/library/items/KEY` 定位；它不是 BibTeX 引用键。`来源 A1` 等指旧报告原有编号。未删除、移动或合并 Zotero 实体条目。
-- 2026-10-09架构专题追加P28–P44，共17篇，当前索引44篇；其中多篇已在旧方向材料出现，本次仅补录并定向核查，未操作Zotero。P26/P27补正文证据。阅读深度与去重依据见[专题检索记录](../experiments/survey&design/SEARCH_LOG.md)。P32/P33共享USCT结果，不能当两份独立实证。
+- 2026-10-09架构专题追加P28–P44，共17篇，当日索引44篇；其中多篇已在旧方向材料出现，本次仅补录并定向核查，未操作Zotero。P26/P27补正文证据。阅读深度与去重依据见[专题检索记录](../experiments/survey&design/exploration00/SEARCH_LOG.md)。P32/P33共享USCT结果，不能当两份独立实证。
+- 2026-10-10 McMg线补录P45，当日索引45篇；P27新增用户指定v2的频域求解迁移审查，证据见[方向入口](../experiments/survey&design/exploration00/McMg线/README.md)。未操作Zotero、未运行求解或训练。
+- 2026-10-11 Idea查重新增P46–P59，共14项（含2份学位论文、2份技术报告），当前为**59个登记条目**，含历史/撤回入口，并非59份独立实证；P09/P26/P27/P29/P44/P45补证据、撤回或正式版。P29已撤回并指向P44更新工作，保留编号、合并演进链证据计数。新增不等于全项目首次发现；全文未取得的条目明确标注。见[检索记录](../experiments/survey&design/exploration00/idea查重/SEARCH_LOG.md)与[查重报告](../experiments/survey&design/exploration00/idea查重/REPORT.md)。未操作Zotero、未运行实验。
 
 ## 方向速查：这些方法已经进入过讨论范围
+
+2026-10-16 exploration 01增量：P60–P73共14个登记条目，合计73个编号；另记作者仓库W02，不计论文。均为已有机制家族延伸，不宣称全项目首次发现；P49新arXiv与旧报告归并。正文深度和证据见[本轮论文笔记](<../experiments/survey&design/exploration 01/papers/README.md>)与[机制查重](<../experiments/survey&design/exploration 01/idea查重/REPORT.md>)。未操作Zotero、未运行实验。
 
 | 关键词 / 方法家族 | 对应论文 | 再讨论时先看什么 |
 | --- | --- | --- |
@@ -33,10 +37,14 @@
 | 相位周期性、圆周分类、少样本适配 | P15 | 阵元控制量与体素相位；是否使用测试颅骨适配 |
 | 多损失、梯度量级、PCGrad、任务共享/拆分 | P18–P20 | 量级失衡、方向冲突和负迁移分别处理 |
 | 扩散 U-Net、scale-shift 条件化、分类器引导 | P21 | 图像生成指标与确定性物理场误差的区别 |
-| 学习迭代器、神经预条件、FGMRES、多重网格 | P09、P26–P27 | 输出是解还是残差校正；迭代次数与总耗时 |
+| 学习迭代器、神经预条件、FGMRES、多重网格 | P09、P26–P27、P46–P49、P59 | 经颅先例已到2022学位论文；迭代次数、完整时间与复场误差分开 |
+| 学习延拓、近零子空间、deflation、Petrov–Galerkin | P60–P61、P63–P65、P70 | SPD/不定适用条件；近零样本矩阵与物理A的奇异空间分开 |
+| 界面条件、Schwarz、Schur、DtN、辅助状态 | P62、P66–P67、P72、W02 | 学习什么未知量；预训练残差校正与逐题求网络权重分开 |
+| 散射分解、HINTS散射、双端口、相容空间 | P68–P69、P71、P73 | 原方程残差与场差值分开；端口组合和结构相容本身已有先例 |
+| 粗仿真+超分辨率、坐标算子、局部峰压 | P51、P54–P55 | 真3D/未见颅骨仍不等于复场；网络前向与粗仿真总时间分开 |
 | Label 基准、物理验证、声电应用、逆向导航 | P14、P22、P24 | 仿真可信度、下游应用与场预测分开 |
 
-## 论文清单
+## 研究条目清单
 
 ### P01 · DeepTFUS · Srivastav 2025
 
@@ -107,6 +115,8 @@ P/S 波速 + 复体力源 + 频率→三分量复位移；U 形神经算子预�
 **A Helmholtz equation solver using unsupervised learning: Application to transcranial ultrasound**
 
 二维当前复场 + Helmholtz 残差 + 隐藏状态/PML→场增量与新状态，多步迭代求解。无需真实场 Label。已有比较：有残差与实际场误差评价；大 CT 域需较多迭代，不能按一次网络前向与直接 surrogate 等同计时。
+
+2026-10-11查重补证据：v2 §3.1的理想化测试平均相对L∞0.36%与§3.3真实CT演示分开；大CT最小全场误差约3000步，20步焦域进展不当全场成绩。原文速度为初步测试声明，缺完整计时表；经颅学习迭代基础先例明确，仍为2D。与P47博士论文共享CT设置；P26后续四CT复测不记为P09自身结果。[原文](https://arxiv.org/html/2010.15761v2)、[查重证据](../experiments/survey&design/exploration00/idea查重/REPORT.md)。
 
 来源 A9；Z=`ASTED85S`；DOI=`10.1016/j.jcp.2021.110430`；关键词：learned optimizer、无监督、迭代记忆。
 
@@ -242,80 +252,220 @@ P/S 波速 + 复体力源 + 频率→三分量复位移；U 形神经算子预�
 
 **Neural operator preconditioning from mixed dataset for the Helmholtz equations: Application to transcranial ultrasound**
 
-**摘要登记。**在二维经颅 Helmholtz 问题中，用混合声速/声源数据和离散相对残差训练粗网格神经预条件器，嵌入 FGMRES 迭代。已知主题是学习预条件与大域迁移；摘要声称可扩展到更大网格，具体精度/耗时和公平预算待查正文。
+**定向正文核查。**二维经颅Helmholtz，混合声速/源数据训练神经预条件器，真实算子与FGMRES保留。2026-10-11补v1 §4.2.2表8：64²训练到512²真实CT切片；D0在4个算例达到相对残差1e−3合计737.70 s、1e−6合计2773.70 s，均为CPU节点，非4×V100小网格计时。GMRES三例失败，不将总时间比写成四例同精度加速；缺独立复场误差及真3D联合泛化。基础Idea直接先例，最高威胁未达到。[原文](https://arxiv.org/html/2607.16906v1)、[查重证据](../experiments/survey&design/exploration00/idea查重/REPORT.md)。
 
 来源：2026-10-08 Zotero 摘要；Z=`NUDED5Y2`；arXiv=`2607.16906`；关键词：mixed dataset、Krylov、FGMRES、粗网格。
 
-2026-10-09补证据：已核查v1 §4.2.2/表8，64²训练→512²真实CT，D0在10⁻³容差四例159–191步；最小训练validation loss的D5有一例5120步未收敛。CPU总计时与一步神经预测分开。详见[专题笔记](../experiments/survey&design/physical_iteration/papers/README.md)。
+2026-10-09补证据：已核查v1 §4.2.2/表8，64²训练→512²真实CT，D0在10⁻³容差四例159–191步；最小训练validation loss的D5有一例5120步未收敛。CPU总计时与一步神经预测分开。详见[专题笔记](../experiments/survey&design/exploration00/physical_iteration/papers/README.md)。
 
 ### P27 · McMg · Jia 等 2026
 
 **McMg: A Learned Phase-Space Multi-channel Multigrid Preconditioner for Helmholtz Equation**
 
-**摘要登记。**残差→校正；粗网格多通道保留局部幅相/传播方向等波信息，介质生成算子系数，固定介质可缓存，V-cycle 对残差保持线性；逐层微调新增粗层。已知主题是相空间多通道多重网格，含三维高频/高对比算例声明；训练配置和具体收益待查正文。
+**定向正文核查。**残差→复校正；介质生成系数可缓存，固定介质V-cycle对残差线性。2026-10-11查重补v2表2：224³ Kimberlina地质介质真3D，容差1e−6，CBS4.128 s／McMg0.608 s；不是颅骨实证。小块到大域直接迁移与新增粗层LLPF微调分开；迭代降幅与总时间降幅分开。[原文](https://arxiv.org/html/2606.30495v2)、[查重证据](../experiments/survey&design/exploration00/idea查重/REPORT.md)。
 
 来源：2026-10-08 Zotero 摘要；Z=`AP24LABK`；arXiv=`2606.30495`；关键词：phase-space、multigrid、linear residual correction、LLPF。
 
-2026-10-09补证据：核查v1 §3/4和表2，固定介质缓存、多通道线性校正；224³三维训练约45 GB（batch3），推理约6 GB。保留机制，不能原样套V100或将残差容差换称V10形状L2。详见[专题笔记](../experiments/survey&design/phase_space/papers/README.md)。
+2026-10-09补证据：核查v1 §3/4和表2，固定介质缓存、多通道线性校正；224³三维训练约45 GB（batch3），推理约6 GB。保留机制，不能原样套V100或将残差容差换称V10形状L2。详见[专题笔记](../experiments/survey&design/exploration00/phase_space/papers/README.md)。
+
+2026-10-10补证据：核查v2（2026-07-02）§2–4及附录A.1–A.7，转向完整求解路线分析；原声速标量算子与V10的密度/吸收/边界差异、随机残差训练、三维总求解成本及负向边界证据见[McMg线](../experiments/survey&design/exploration00/McMg线/README.md)。这是已知论文深化，不是新发现或迁移成功。
 
 ## 2026-10-09 架构专题增量：P28–P44
 
 以下“补录”只表示原索引未列，不表示全项目新发现；旧Born、carrier、MIFNO/WIRE/Butterfly等方向已定向命中。候选设计与验证只属于survey&design，未运行。
 
 ### P28 · LBS · Stanziola 2022预印本/2023正式版
-**A Learned Born Series for Highly-Scattering Media**；arXiv=`2212.04948`；DOI=`10.1121/10.0017937`。二维介质/点源→复场；学习CBS式传播/散射/更新。已有方向延伸；本轮核查方法与图1，不编造曲线精确增益。[证据](../experiments/survey&design/physical_iteration/papers/README.md)。
+**A Learned Born Series for Highly-Scattering Media**；arXiv=`2212.04948`；DOI=`10.1121/10.0017937`。二维介质/点源→复场；学习CBS式传播/散射/更新。已有方向延伸；本轮核查方法与图1，不编造曲线精确增益。[证据](../experiments/survey&design/exploration00/physical_iteration/papers/README.md)。
 
-### P29 · NBSO · Sun等2023预印本
-**Neural Born Series Operator for Biomedical Ultrasound Computed Tomography**；arXiv=`2312.15575`。二维介质/源→复场；介质×状态与背景乘性输出。背景/Born家族延伸，表1/5定向阅读；多源相对FNO收益约3.06%，不混单/多源列。[证据](../experiments/survey&design/physical_iteration/papers/README.md)。
+### P29 · NBSO · Sun等2023预印本（2026撤回）
+
+**历史入口。**2026-10-11核实：2026-08-03的v2为撤回公告，作者说明v1未完成、现已扩展更新为P44（2508.12226）。保留以下历史登记，旧版数值不作现行性能，P29/P44不计两份独立实证。[作者撤回记录](https://arxiv.org/abs/2312.15575)。
+**Neural Born Series Operator for Biomedical Ultrasound Computed Tomography**；arXiv=`2312.15575`。二维介质/源→复场；介质×状态与背景乘性输出。背景/Born家族延伸，表1/5定向阅读；多源相对FNO收益约3.06%，不混单/多源列。[证据](../experiments/survey&design/exploration00/physical_iteration/papers/README.md)。
+
+2026-10-11查重补证据：v1 §4.1.2明确脑模体排除颅骨（MRI骨信号不足），不是经颅先例；3D模体切片用于2D前向，不升级为3D传播。表3网络前向与CBS计时不是同复场误差容差的完整FWI比较。[原文](https://arxiv.org/html/2312.15575v1)、[查重证据](../experiments/survey&design/exploration00/idea查重/REPORT.md)。
 
 ### P30 · NSNO · 2024预印本
-**NSNO: Neumann Series Neural Operator for Solving Helmholtz Equations in Inhomogeneous Medium**；arXiv=`2401.13494`。q/f→二维复解，G(q·状态)有限展开；正文§4/5核查，架构与物理loss贡献需拆开。[证据](../experiments/survey&design/physical_iteration/papers/README.md)。
+**NSNO: Neumann Series Neural Operator for Solving Helmholtz Equations in Inhomogeneous Medium**；arXiv=`2401.13494`。q/f→二维复解，G(q·状态)有限展开；正文§4/5核查，架构与物理loss贡献需拆开。[证据](../experiments/survey&design/exploration00/physical_iteration/papers/README.md)。
 
 ### P31 · MgNO · He/Liu/Xu · ICLR2024
-**MgNO: Efficient Parameterization of Linear Operators via Multigrid**；arXiv=`2310.19809`。多重网格参数化通道间算子；原Helmholtz是固定边界激励100²实场，不等同P32改造版。定向正文/附录阅读。[证据](../experiments/survey&design/medium_source/papers/README.md)。
+**MgNO: Efficient Parameterization of Linear Operators via Multigrid**；arXiv=`2310.19809`。多重网格参数化通道间算子；原Helmholtz是固定边界激励100²实场，不等同P32改造版。定向正文/附录阅读。[证据](../experiments/survey&design/exploration00/medium_source/papers/README.md)。
 
 ### P32 · OpenBreastUS · Zeng等2025
-**OpenBreastUS: Benchmarking Neural Operators for Wave Imaging Using Breast Ultrasound Computed Tomography**；arXiv=`2507.15035`。480²介质/源→完整复场，含64→256源评价。表II/VII和附录B核查；最佳MgNO实际对应P33 MgNO-self，共享结果。[证据](../experiments/survey&design/medium_source/papers/README.md)。
+**OpenBreastUS: Benchmarking Neural Operators for Wave Imaging Using Breast Ultrasound Computed Tomography**；arXiv=`2507.15035`。480²介质/源→完整复场，含64→256源评价。表II/VII和附录B核查；最佳MgNO实际对应P33 MgNO-self，共享结果。[证据](../experiments/survey&design/exploration00/medium_source/papers/README.md)。
 
 ### P33 · SC-NO / MgNO-self · He/Liu/Xu · 2025/2026 v2
-**Self-composing neural operators for high-frequency and multiscale PDE surrogates**；arXiv=`2508.20650`。v1旧题名“Self-Composing Neural Operators with Depth and Accuracy Scaling via Adaptive Train-and-Unroll Approach”为同一工作。v2子集表3 MgNO改造正向、FNO/U-Net负向；§3用同组数值描述direct/T&U，结构/训练策略归因尚未拆净。正文§3/4及新版表3核查。[证据](../experiments/survey&design/medium_source/papers/README.md)。
+**Self-composing neural operators for high-frequency and multiscale PDE surrogates**；arXiv=`2508.20650`。v1旧题名“Self-Composing Neural Operators with Depth and Accuracy Scaling via Adaptive Train-and-Unroll Approach”为同一工作。v2子集表3 MgNO改造正向、FNO/U-Net负向；§3用同组数值描述direct/T&U，结构/训练策略归因尚未拆净。正文§3/4及新版表3核查。[证据](../experiments/survey&design/exploration00/medium_source/papers/README.md)。
 
 ### P34 · Wave-ADR-NS · Cui/Jiang/Shu · 2024预印本
-**A Neural Multigrid Solver for Helmholtz Equations with High Wavenumber and Heterogeneous Media**；arXiv=`2404.02493`。波数附近误差→走时搬移/粗ADR校正；二维求解器。方法/表2/局限定向核查。[证据](../experiments/survey&design/phase_space/papers/README.md)。
+**A Neural Multigrid Solver for Helmholtz Equations with High Wavenumber and Heterogeneous Media**；arXiv=`2404.02493`。波数附近误差→走时搬移/粗ADR校正；二维求解器。方法/表2/局限定向核查。[证据](../experiments/survey&design/exploration00/phase_space/papers/README.md)。
 
 ### P35 · Mamba · Gu/Dao · 2023预印本
-**Mamba: Linear-Time Sequence Modeling with Selective State Spaces**；arXiv=`2312.00752`。选择性状态和并行scan；v2方法/实复状态讨论核查；通用思想，不当作波场证据。[证据](../experiments/survey&design/spatial_state/papers/README.md)。
+**Mamba: Linear-Time Sequence Modeling with Selective State Spaces**；arXiv=`2312.00752`。选择性状态和并行scan；v2方法/实复状态讨论核查；通用思想，不当作波场证据。[证据](../experiments/survey&design/exploration00/spatial_state/papers/README.md)。
 
 ### P36 · VMamba · NeurIPS2024
-**VMamba: Visual State Space Model**；arXiv=`2401.10166`。二维四方向scan→视觉特征；方法与v2扫描消融表5定向核查，包含吞吐/NaN负向事实。[证据](../experiments/survey&design/spatial_state/papers/README.md)。
+**VMamba: Visual State Space Model**；arXiv=`2401.10166`。二维四方向scan→视觉特征；方法与v2扫描消融表5定向核查，包含吞吐/NaN负向事实。[证据](../experiments/survey&design/exploration00/spatial_state/papers/README.md)。
 
 ### P37 · WIRE · Saragadam等 · CVPR2023
-**WIRE: Wavelet Implicit Neural Representations**；arXiv=`2301.05187`。复Gabor局部振荡激活；已有旧工程组件，本轮核查§3；跨源三维复场未验证。[证据](../experiments/survey&design/phase_space/papers/README.md)。
+**WIRE: Wavelet Implicit Neural Representations**；arXiv=`2301.05187`。复Gabor局部振荡激活；已有旧工程组件，本轮核查§3；跨源三维复场未验证。[证据](../experiments/survey&design/exploration00/phase_space/papers/README.md)。
 
 ### P38 · MFN · Fathony等 · ICLR2021
-**Multiplicative Filter Networks**；OpenReview=`OmtmcPkkhT`。线性状态×坐标滤波器的逐层展开；方法与作者代码入口核查；只提取结构机制，不当经颅实证。[证据](../experiments/survey&design/phase_space/papers/README.md)。
+**Multiplicative Filter Networks**；OpenReview=`OmtmcPkkhT`。线性状态×坐标滤波器的逐层展开；方法与作者代码入口核查；只提取结构机制，不当经颅实证。[证据](../experiments/survey&design/exploration00/phase_space/papers/README.md)。
 
 ### P39 · PhaseDNN · Cai/Li/Liu · 2019预印本
-**A Phase Shift Deep Neural Network for High Frequency Approximation and Wave Problems**；arXiv=`1909.11759`；DOI=`10.1137/19M1310050`。相移后学习高频；项目已有讨论/试验，索引补录，本轮不重复全文阅读。[证据](../experiments/survey&design/phase_space/papers/README.md)。
+**A Phase Shift Deep Neural Network for High Frequency Approximation and Wave Problems**；arXiv=`1909.11759`；DOI=`10.1137/19M1310050`。相移后学习高频；项目已有讨论/试验，索引补录，本轮不重复全文阅读。[证据](../experiments/survey&design/exploration00/phase_space/papers/README.md)。
 
 ### P40 · MIFNO · Lehmann/Gatti/Clouteau · JCP2025
-**Multiple-input Fourier Neural Operator (MIFNO) for source-dependent 3D elastodynamics**；arXiv=`2404.10115`；DOI=`10.1016/j.jcp.2025.113813`。介质体/源向量双分支→地表时空速度；已有旧工程目录，论文/作者仓库入口定向核查。[证据](../experiments/survey&design/medium_source/papers/README.md)。
+**Multiple-input Fourier Neural Operator (MIFNO) for source-dependent 3D elastodynamics**；arXiv=`2404.10115`；DOI=`10.1016/j.jcp.2025.113813`。介质体/源向量双分支→地表时空速度；已有旧工程目录，论文/作者仓库入口定向核查。[证据](../experiments/survey&design/exploration00/medium_source/papers/README.md)。
 
 ### P41 · FIONet · Kothari/de Hoop/Dokmanić · NeurIPS2020
-**Learning the Geometry of Wave-Based Imaging**；arXiv=`2006.05854`。方向波包与几何路由用于波逆成像；正文方法/作者仓库核查，不当作点源复压力直接预测。[证据](../experiments/survey&design/source_kernel/papers/README.md)。
+**Learning the Geometry of Wave-Based Imaging**；arXiv=`2006.05854`。方向波包与几何路由用于波逆成像；正文方法/作者仓库核查，不当作点源复压力直接预测。[证据](../experiments/survey&design/exploration00/source_kernel/papers/README.md)。
 
 ### P42 · Butterfly-Net2 · Xu/Li/Cheng · MSML2020
-**Butterfly-Net2: Simplified Butterfly-Net and Fourier Transform Initialization**；arXiv=`1912.04154`；PMLR=`v107/xu20b`。结构稀疏傅里叶算子近似；旧Butterfly方向补录，正文/官方摘要定向核查。[证据](../experiments/survey&design/source_kernel/papers/README.md)。
+**Butterfly-Net2: Simplified Butterfly-Net and Fourier Transform Initialization**；arXiv=`1912.04154`；PMLR=`v107/xu20b`。结构稀疏傅里叶算子近似；旧Butterfly方向补录，正文/官方摘要定向核查。[证据](../experiments/survey&design/exploration00/source_kernel/papers/README.md)。
 
 ### P43 · HINTS · Zhang等 · NMI2024
-**Blending Neural Operators and Relaxation Methods in PDE Numerical Solvers**；arXiv=`2208.13273`；DOI=`10.1038/s42256-024-00910-x`。补正文§2.3–2.5/附录：残差DeepONet与relaxation交替，含3D环柱FGMRES大系统及小规模更贵的边界；不作当前颅骨速度/形状精度外推。[证据](../experiments/survey&design/physical_iteration/papers/README.md)。
+**Blending Neural Operators and Relaxation Methods in PDE Numerical Solvers**；arXiv=`2208.13273`；DOI=`10.1038/s42256-024-00910-x`。补正文§2.3–2.5/附录：残差DeepONet与relaxation交替，含3D环柱FGMRES大系统及小规模更贵的边界；不作当前颅骨速度/形状精度外推。[证据](../experiments/survey&design/exploration00/physical_iteration/papers/README.md)。
 
 ### P44 · OpenWaves / S²NO · Zeng等 · 2025/2026 v4
-**Ultrasound Tomography of Musculoskeletal Tissues with Generative Neural Physics**；arXiv=`2508.12226`；v1题名含“In vivo 3D”为同一工作。v4正文及S9/S12核查：强散射CBS式神经算子，主前向仍2D，3D体由轴向切片形成；共享参数消融负向。[证据](../experiments/survey&design/physical_iteration/papers/README.md)。
 
-## 非论文网页（保留查重，不计入论文总数）
+2026-10-11补版本关系：当前v4为2026-08-06；P29作者撤回公告明确指向本工作，按同一演进链处理，保留历史编号但不重复计证据。[当前版本](https://arxiv.org/abs/2508.12226)。
+**Ultrasound Tomography of Musculoskeletal Tissues with Generative Neural Physics**；arXiv=`2508.12226`；v1题名含“In vivo 3D”为同一工作。v4正文及S9/S12核查：强散射CBS式神经算子，主前向仍2D，3D体由轴向切片形成；共享参数消融负向。[证据](../experiments/survey&design/exploration00/physical_iteration/papers/README.md)。
+
+## 2026-10-10 McMg线增量
+
+### P45 · 变密度Born · Stanziola等 · 2025预印本／2026 JASA
+
+**Iterative Born Solver for the Acoustic Helmholtz Equation with Heterogeneous Sound Speed and Density**；arXiv=`2507.16087`。属于已有Born方向延伸。v1正文及作者MATLAB源码核查：一阶压力/速度系统与universal split预条件，支持3D、移动点源及可变c/ρ/α；经颅基准7的焦点幅值结果不等于全颅内复场形状L2。2026-10-10新增吸收文档/代码约定、缺失参考MAT与人工绘图对齐问题；固定作者提交，未运行。[单篇导读与证据](../experiments/survey&design/exploration00/McMg线/papers/born_density_2025.md)。
+
+2026-10-11补正式版：JASA 2026，DOI 10.1121/10.0042259，与2507.16087合并；没有学习模块，属于传统基线而非神经加速先例。[出版社原文](https://doi.org/10.1121/10.0042259)。
+
+## 2026-10-11 Idea查重增量
+
+以下新增只表示统一索引此前未登记；全文深度与缺口见[查重报告](../experiments/survey&design/exploration00/idea查重/REPORT.md)。
+
+### P46 · NPBS · Wang/Jia/Liu · 2026预印本
+
+**Neural Preconditioned Born Series: A Metric-Matched Framework for Learning-based Preconditioners**；arXiv 2603.18527v4。v1题名Born-Series-Inspired Residual Metric for Learning-based Preconditioners，同一工作。定向正文§3/5及附录G/H/J：学习Born预条件残差坐标中的校正；2D OpenFWI，无颅骨。表3减迭代不必更快，须比较最快CBS完整时间。已有Born/神经预条件家族延伸。[原文](https://arxiv.org/html/2603.18527v4)。
+
+### P47 · Xiang · 2022博士论文
+
+**Solution of large linear systems with a massive number of right-hand sides and machine learning**。作者全文第5章定向核查，§5.4.2.3印刷页112–119含真实512²颅骨CT、神经预条件FGMRES与场图；继承P09设置，非独立CT数据。经颅神经预条件先例已于2022出现；2D、检查点泛化有失效、完整颅骨性能表有缺项。学位论文不计独立期刊论文。[作者全文](https://irma.math.unistra.fr/~xiang/research/XIANG_YANFEI_2022.pdf)。
+
+### P48 · Nguyen Son Hai · 2022硕士论文
+
+**Approximation of Sound Propagation by Neural Networks**。同题会议展示合并。大学全文§6–8：GNN利用当前场和显式Helmholtz残差迭代，2D理想化颅骨，96²→512²大域；图7.6/结论明确速度与精度弱于Helmnet/k-Wave，大域训练调整须单列。方法部分先例，非高性能经颅实现。[大学元数据](https://www.fit.vut.cz/study/thesis/24521/.en)、[全文](https://www.fit.vut.cz/study/thesis-file/24521/24521.pdf)。
+
+### P49 · Giraud/Kruse/Mycek/Shpakovych/Xiang · 2025技术报告
+
+**Neural network preconditioning: a case study for the solution of the parametric Helmholtz equation**；HAL 05157038，Inria RR-9593。定向全文核查：学习预条件与参数/域迁移，实际实验为通用2D；仅参考文献引用P09，不当自身经颅测试。与P26同作者/机制前序。[机构全文](https://cerfacs.fr/wp-content/uploads/2026/01/RR-9593-1-1.pdf)。
+
+2026-10-16版本补查：[arXiv2610.16542](https://arxiv.org/abs/2610.16542)于2026-10-12公开，同题作者链与上述技术报告归并，不新增编号；本次只核元数据/摘要。
+
+### P50 · PEN-FWI · 2024 TMI
+
+**Deep Learning With Physics-Embedded Neural Network for Full Waveform Ultrasonic Brain Imaging**；DOI 10.1109/TMI.2024.3363144，PMID38329866。**摘要登记，未取得全文。**学习FCNN替代FD前向，再用于学习逆网络，最终是2D脑声速图像；1.13 s为重建时间，不作复场数值求解速度。前向输出/物理残差细节待全文。[NCBI](https://pubmed.ncbi.nlm.nih.gov/38329866/)。
+
+### P51 · Shin/Peng/Kim/Yoo/Yoon · 2023 SR-ResNet
+
+**Multivariable-incorporating super-resolution residual network for transcranial focused ultrasound simulation**；DOI 10.1016/j.cmpb.2023.107591，PMID37182263。**出版社/NCBI摘要登记，未取得全文。**3D粗仿真压力/速度/CT→超分辨率压力，3个离体颅骨，1.0→0.5 mm；焦体积准确率和成本改善不等于全复场误差。宽口径混合流程近邻；复数输出、域与严格拆分待核。不与P05混淆。[出版社](https://www.sciencedirect.com/science/article/pii/S0169260723002560)。
+
+### P52 · 经颅PINN · 2023 Ultrasonics
+
+**Physics-informed neural networks for transcranial ultrasound wave propagation**；DOI 10.1016/j.ultras.2023.107026，PMID37137219。**摘要登记，未取得全文。**2D时域传播与PDE/边界损失；物理训练损失不等于学习残差预条件，权重共享和完整性能待核。区别于P10/P11地震PINN。[NCBI](https://pubmed.ncbi.nlm.nih.gov/37137219/)。
+
+### P53 · Viscoacoustic modified Born · 2025 JASA
+
+**A viscoacoustic wave equation solver using modified Born series**；DOI 10.1121/10.0039529，PMID41081483。**摘要登记。**2D/3D变声速、密度、衰减及颅骨算例，纯传统Born类求解；非学习先例。全文公平性能本轮未核，不混P45。[NCBI](https://pubmed.ncbi.nlm.nih.gov/41081483/)。
+
+### P54 · tFUSFormer · Shin/Seo/Yoo/Yoon · 2024 JBHI
+
+**tFUSFormer: Physics-Guided Super-Resolution Transformer for Simulation of Transcranial Focused Ultrasound Propagation in Brain Stimulation**；DOI 10.1109/JBHI.2024.3389708，PMID38625763。作者接受稿及代码核查：25³→100³局部3D最大压力超分辨率，12训练颅骨/2未见颅骨；表IX完整LR+SR为2.3054 s而非仅0.0947 s网络前向。输出pmax及焦域IoU，不是Re/Im或复场残差求解。与P51有作者/前序关系。[作者接受稿](https://ieeexplore.ieee.org/ielx7/6221020/6363502/10500878.pdf)、[代码](https://github.com/iangilan/tFUSFormer)。
+
+### P55 · tFUSOperator · Seo等 · 2026预印本／MICCAI DT4H
+
+**tFUSOperator: Operator Learning for Transcranial Focused Ultrasound Digital Twins**；arXiv 2608.01839v1，会议camera-ready合并。正文§2/3及作者README核查：自由场峰压/CT或MR/位姿频率→3D56³局部pmax；13颅骨8/2/3划分、已见颅骨留出30/300位置。坐标注意力端到端代理，没有真实A残差预条件回路；名称“operator”不等于传统数值算子加速。[原文](https://arxiv.org/html/2608.01839v1)、[会议](https://papers.miccai.org/miccai-2026-sat/DT4H_010.html)。
+
+### P56 · Huang等 · 2025三维经颅PACT
+
+**Fast aberration correction in 3D transcranial photoacoustic computed tomography via a learning-based image reconstruction method**；DOI 10.1016/j.pacs.2025.100698。作者全文§1/3定向核查：近似伴随重建后接图像恢复网络，输出初始压力图像；是真3D颅骨逆成像，不是颅外源到稳态复场的正向求解先例。[作者全文](https://coilab.caltech.edu/documents/30905/Huang-2025-Photoacoustics.pdf)。
+
+### P57 · mSOUND颅骨验证 · 2026 OJUFFC
+
+**Numerical Validation of mSOUND Using Fully Heterogeneous Skull Models**；DOI 10.1109/OJUFFC.2026.3677158，PMID41971001。**摘要登记。**真实异质颅骨快速传统传播验证，非学习先例；焦域精度和速度声明不等于全复场形状误差。本轮不凭摘要做公平基线定量。[NCBI](https://pubmed.ncbi.nlm.nih.gov/41971001/)。
+
+### P58 · Seo等 · 2026主动学习声透镜优化
+
+**Optimization of Acoustic Lens Design for Transcranial Holographic Ultrasound using an Active Learning-Based Genetic Algorithm**；DOI 10.1093/jcde/qwag077，2026-09-18在线。**出版社摘要登记。**透镜几何→聚焦性能代理，主动学习接遗传算法，目标是逆设计；不计正向复场学习求解先例。[出版社](https://academic.oup.com/jcde/advance-article/doi/10.1093/jcde/qwag077/8817259?searchresult=1)。
+
+### P59 · Shpakovych · 2023技术报告
+
+**Neural network preconditioning of large linear systems**；Inria RT-0518，HAL 04254315。**仅元数据/引文登记，未取得全文。**P26引文与Inria年度报告互证；是否有经颅实验与其维度/性能待核，不因后续引用就记为经颅直接先例。[机构记录](https://radar.inria.fr/report/2023/concace/index.html)、[HAL入口](https://hal.science/hal-04254315/document)。
+
+## 2026-10-16 exploration 01：机制查重与经典思想
+
+以下均为原索引新增、已有方向延伸。唯一公共事实笔记：[papers](<../experiments/survey&design/exploration 01/papers/README.md>)。
+
+### P60 · Greenfeld等 · ICML2019
+
+**Learning to Optimize Multigrid PDE Solvers**；arXiv1902.10248，PMLR97:2415–2423。定向读§2–4：从二维扩散离散算子学延拓规则，非直接学解。[官方PDF](https://proceedings.mlr.press/v97/greenfeld19a/greenfeld19a.pdf)。
+
+### P61 · Azulay/Treister · SISC2022
+
+**Multigrid-augmented deep learning preconditioners for the Helmholtz equation**；arXiv2203.11025，DOI10.1137/21M1433514。定向读§3–4：U-Net/移位Laplacian/FGMRES与encoder–solver分工。[v1正文](https://arxiv.org/html/2203.11025v1)。
+
+### P62 · MLORAS · NeurIPS2022
+
+**Learning Interface Conditions in Domain Decomposition Solvers**。定向读§2–4：学习Robin附加矩阵；式1为η−Δ、η>0的正定问题，不误读成高频不定声学实证。[官方正文](https://papers.nips.cc/paper_files/paper/2022/file/2f8928efe957139e9c0efc98f173f4be-Paper-Conference.pdf)。
+
+### P63 · NGO粗空间结构比较 · 2026
+
+**When can a neural operator replace a coarse solve? Architectural principles for two-level preconditioning**；arXiv2605.19867。定向读§2–4：基积分/采样与源线性两轴；Helmholtz粗逆退化及固定基容量问题分开。[v1](https://arxiv.org/html/2605.19867v1)。
+
+### P64 · NeuraLSP · 2026
+
+**NeuraLSP: An Efficient and Rigorous Neural Left Singular Subspace Preconditioner for Conjugate Gradient Methods**；arXiv2601.20174。定向读§3–5：学近零样本矩阵S的主左奇异子空间，不是直接学A最小奇异向量；PCG范围。[v1](https://arxiv.org/html/2601.20174v1)。
+
+### P65 · GMP · 2026
+
+**Graph Neural Multilevel Preconditioners for Iterative Solvers**；arXiv2607.28456。定向读§3及结论：AMG图层次、分别参数化的限制/插值，非SPD测试及开销边界。[v1](https://arxiv.org/html/2607.28456v1)。
+
+### P66 · Gander/Zhang · SIAM Review2019
+
+**A Class of Iterative Solvers for the Helmholtz Equation: Factorizations, Sweeping Preconditioners, Source Transfer, Single Layer Potentials, Polarized Traces, and Optimized Schwarz Methods**；DOI10.1137/16M109781X。定向读共同块LU/Schwarz框架，防止将异名同机制当新颖。[原文](https://epubs.siam.org/doi/10.1137/16M109781X)。
+
+### P67 · Learned infinite elements · 2020/2021
+
+**Learned infinite elements**；arXiv2010.15479。定向读v2§2–4：可分离外域DtN拟合、稀疏辅助系统Schur；非预训练NN。[v2正文](https://arxiv.org/html/2010.15479v2)。
+
+### P68 · HINTS散射扩展 · 2024
+
+**Large scale scattering using fast solvers based on neural operators**；arXiv2405.12380。定向读§3–4：体强迫/边界入射双网络结合传统迭代，含3D障碍散射。P43家族延伸，非同篇版本。[v1](https://arxiv.org/html/2405.12380v1)。
+
+### P69 · Hybrid scattering · 2026
+
+**Hybrid operator learning of wave scattering maps in high-contrast media**；arXiv2602.11197。定向读§3–5：FNO背景＋ViT散射校正，固定源；场差值不等于真实迭代残差。[v1](https://arxiv.org/html/2602.11197v1)。
+
+### P70 · 学习算子增强PCG · 2025
+
+**Leveraging Operator Learning to Accelerate Convergence of the Preconditioned Conjugate Gradient Method**；arXiv2508.00101。定向读§2–3：SPD对象，学得基用于deflation并稀疏化。[v1](https://arxiv.org/html/2508.00101v1)。
+
+### P71 · 光子散射矩阵设计 · 2026
+
+**Surrogate Scattering Matrix-Guided Inverse Design of Nanophotonic Neural Networks**；DOI10.1002/nap2.70302，2026-09-23。定向读§2.1：双向散射块/互易性/组合，光学分类器逆设计，非残差求解器。[正文](https://onlinelibrary.wiley.com/doi/full/10.1002/nap2.70302)。
+
+### P72 · ELM-DD · 2024/2025
+
+**A Nonoverlapping Domain Decomposition Method for Extreme Learning Machines: Elliptic Problems**；arXiv2406.15959。定向读§2–3：消局部网络输出层系数得到界面Schur，不是固定预训练残差映射。[v1](https://arxiv.org/html/2406.15959v1)。
+
+### P73 · de Rham兼容DNN-FEM · 2023
+
+**De Rham compatible Deep Neural Network FEM**；DOI10.1016/j.neunet.2023.06.008。**只核出版社摘要**：最低阶de Rham有限元空间的精确神经表示；不作声学迭代性能判断。[出版社](https://www.sciencedirect.com/science/article/pii/S0893608023003088)。
+
+## 非论文网页（保留查重，不计入研究条目总数）
 
 **RF Pulse design and parallel transmission (pTx)**，PTB 网页，Z=`MCHUDCSB`。属于 MRI 射频脉冲/并行发射主题；当前摘要只含机构介绍，不据此提炼具体方法。位于 `tus_surrogate` 根收藏夹。
+
+**W02 · NSO作者仓库**：[Neural Schur Complement Operators](https://github.com/ansschh/NSO)。2026-10-16仅核README：SPD粗到细迁移中学`ker R`细节并保持粗预测。独立论文/正式发表未核，不算论文实证；作为神经Schur机制查重线索。
 
 ## 维护方式
 

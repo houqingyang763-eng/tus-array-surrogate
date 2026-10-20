@@ -1,6 +1,6 @@
 # 已知论文与方向检索清单
 
-初始核对：2026-10-08；专题增量核查：2026-10-09—18。用途：讨论或检索新方向前先查重；允许重访和借鉴，但应明确说出“已有方向 + 本次新增内容”。
+初始核对：2026-10-08；专题增量核查：2026-10-09—19。用途：讨论或检索新方向前先查重；允许重访和借鉴，但应明确说出“已有方向 + 本次新增内容”。
 
 ## 给 GPT / Codex 的使用规则
 
@@ -37,7 +37,7 @@
 | 相位周期性、圆周分类、少样本适配 | P15 | 阵元控制量与体素相位；是否使用测试颅骨适配 |
 | 多损失、梯度量级、PCGrad、任务共享/拆分 | P18–P20 | 量级失衡、方向冲突和负迁移分别处理 |
 | 扩散 U-Net、scale-shift 条件化、分类器引导 | P21 | 图像生成指标与确定性物理场误差的区别 |
-| 学习迭代器、神经预条件、FGMRES、多重网格 | P09、P26–P27、P46–P49、P59、P76–P78、P87–P90、P96 | 经颅先例已到2022学位论文；优化粗色散/递归deflation与隐式encoder–solver已进入比较；迭代次数和完整时间分开 |
+| 学习迭代器、神经预条件、FGMRES、多重网格 | P09、P26–P27、P46–P49、P59、P76–P78、P87–P90、P96、P99 | 经颅先例已到2022学位论文；优化粗色散/递归deflation与隐式encoder–solver已进入比较；迭代次数、内层工作和完整时间分开 |
 | 学习延拓、近零子空间、deflation、Petrov–Galerkin | P60–P61、P63–P65、P70 | SPD/不定适用条件；近零样本矩阵与物理A的奇异空间分开 |
 | 界面条件、Schwarz、Schur、DtN、辅助状态 | P62、P66–P67、P72、W02 | 学习什么未知量；预训练残差校正与逐题求网络权重分开 |
 | 散射分解、HINTS散射、双端口、相容空间 | P68–P69、P71、P73 | 原方程残差与场差值分开；端口组合和结构相容本身已有先例 |
@@ -541,6 +541,8 @@ P87–P91最初用于确认遗漏，随后已补算法、数值、成本及作�
 
 **Matrix-Free Parallel Scalable Multilevel Deflation Preconditioning for Heterogeneous Time-Harmonic Wave Problems**；arXiv2412.04980，DOI10.1007/s10915-024-02786-w。已读§3–5/表9–13：细两层MG-CSLP、递归粗解、内容差调优；论文算例二维。另读作者2025-06-24 DD29报告：已有大三维后续测试及粗校正权重γ；来源身份与计时条件分开，不由二维论文代填。[正文](https://arxiv.org/html/2412.04980v1)、[后续定位](../experiments/survey&design/experiment02/REFERENCES.md#r24)。
 
+2026-10-19重访补P99博士论文第6章：DD29的14,660 s盐丘是单核顺序，同例64核367.56 s；GO千核小时级则含73–100次第二层内迭代。原七点细离散的复场误差与代数残差分开。新增证据、版本及去留见[exploration03](../experiments/survey&design/exploration03_C2vsC3/REFERENCES.md#r05)，不继承旧优先级。
+
 ### P91 · 高频butterfly多前沿分解 · Liu/Ghysels/Claus/Li · SISC2021
 
 **Sparse Approximate Multifrontal Factorization with Butterfly Compression for High-Frequency Wave Equations**；arXiv2007.00202，DOI10.1137/20M1349667。已读§5–6/表2–3并核STRUMPACK入口：分解/在线/因子存储分别计。高频butterfly不同于普通BLR；大存储常数、压缩精度与Q摊销可改变优选。P85 GPU-BLR不能拼成GPU-HODBF成绩。[正文](https://arxiv.org/html/2007.00202)、[定位](../experiments/survey&design/experiment02/REFERENCES.md#r24)。
@@ -572,6 +574,22 @@ P87–P91最初用于确认遗漏，随后已补算法、数值、成本及作�
 ### P98 · Helmholtz粗空间比较 · Bootland等 · CMA2021
 
 **A comparison of coarse spaces for Helmholtz problems in the high frequency regime**；arXiv2012.02678v3，CMA98,239–253。读§4–6/表17–19：网格/DtN/H-GenEO和两层ORAS，有三维；构造、粗问题内迭代与大粗空间资源限制不能漏计。本文未充分优化计时，不作速度榜。[正文](https://arxiv.org/html/2012.02678)、[证据](../experiments/survey&design/experiment02/REFERENCES.md#r30)。
+
+### P99 · 三维hybrid多层deflation · Chen · Delft博士论文2025
+
+**High-Performance Iterative Methods for the Helmholtz Equation**；DOI10.4233/uuid:8e7c44b5-091a-4a14-98d7-762be3ee59dd。2026-10-19新增登记，属于P78/P90和DD29的作者后续，不是新家族。定向读§1.2.2、第6章及附录B；视觉核表6.1/6.5/6.6/6.7：FGMRES(5)、真残差10⁻⁶、单核/64核/1152–2304核身份、L2瓶颈与原细离散误差。约3.8B例22,006 s/1152核，不与顺序盐丘时间混用。[学校记录及全文](https://repository.tudelft.nl/record/uuid:8e7c44b5-091a-4a14-98d7-762be3ee59dd)、[读取定位](../experiments/survey&design/exploration03_C2vsC3/REFERENCES.md#r05)。当前99个登记编号，含演进链，非99份独立验证；仅文献分析，未做项目实验。
+
+## 2026-10-19 exploration04：简单底座基础来源补录
+
+P45/P74/P76/P28/P46为已知论文重访；本轮新增固定源码、停止量、实际物理/工作域、引用与baseline使用、成果计时的交叉核查，见[REPORT](../experiments/survey&design/exploration04_simple_baseline/REPORT.md)及[来源定位](../experiments/survey&design/exploration04_simple_baseline/REFERENCES.md)。推荐现有变密度Born/Universal Split，不把经典家族的采用程度移给具体较新实现；未设计学习方法或运行实验。以下P100/P101是已知家族的基础文献补录，合计101个登记编号，不是101份独立验证。
+
+### P100 · Universal Split · Vettenburg/Vellekoop · 2022预印本/2023v2
+
+**A universal matrix-free split preconditioner for the fixed-point iterative solution of non-symmetric linear systems**；arXiv2207.14222v2。P45/P74家族基础来源；已读§2/算法1、§3.1、§4.1表1及相关收敛条件：预条件固定点可消去显式forward，迭代器比较须计实际成本。原数值非三维头模。[正文](https://arxiv.org/html/2207.14222v2)、[定位R02](../experiments/survey&design/exploration04_simple_baseline/REFERENCES.md#r02)。
+
+### P101 · 经典CSLP多重网格 · Erlangga/Oosterlee/Vuik · SISC2006
+
+**A Novel Multigrid Based Preconditioner for Heterogeneous Helmholtz Problems**；DOI10.1137/040615195。P76/P78等家族的经典来源；已读正式版§3–5并视觉核表6/7：复移位、MG近似逆、外BiCGSTAB每步两次预条件；原计算二维，不代填本项目GPU成绩。[作者正式版PDF](https://diamhomes.ewi.tudelft.nl/~kvuik/papers/Erl06OV.pdf)、[定位R04](../experiments/survey&design/exploration04_simple_baseline/REFERENCES.md#r04)。
 
 ## 非论文网页（保留查重，不计入研究条目总数）
 

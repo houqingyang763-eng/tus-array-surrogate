@@ -1,3 +1,9 @@
+# 当前阅读入口（2026-10-20）
+
+当前为exploration04，S1调研已完成，推荐现有变密度Born/Universal Split。先读[本轮报告](../experiments/survey&design/exploration04_simple_baseline/REPORT.md)和[任务书](../experiments/survey&design/exploration04_simple_baseline/MISSION.md)。尚未设计学习方案或启动项目实验。下面原有内容保留为历史快照，不作为当前候选排序或机器状态。
+
+---
+
 # 当前资料入口
 
 2026-10-19当前调查为 [experiment02综合报告](../experiments/survey&design/experiment02/REPORT.md)，七项深入补查与重写已完成，待人工阅读验收；[关键文献](../experiments/survey&design/experiment02/REFERENCES.md)、[当前状态](CURRENT_STATUS.md)、[轮次地图](../experiments/survey&design/README.md)和[统一索引P01–P98](literature_seen_index.md)提供定位。

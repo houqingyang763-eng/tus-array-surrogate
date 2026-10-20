@@ -1,5 +1,7 @@
 # experiment02：求解路线与神经网络加速位置调研
 
+> **已归档（2026-10-19，原路径保留）。**以下正文记录当时的研究与状态，不构成当前推荐或授权；现行任务见[exploration04](../exploration04_simple_baseline/README.md)。
+
 日期：2026-10-19。状态：**七项深入补查及报告重写已完成，待人工阅读验收。**本轮为文献/源码比较，没有新增求解或训练实测。
 
 入口：[AGENTS](AGENTS.md) → [MISSION](MISSION.md) → [REVIEW](REVIEW.md)。

@@ -1,5 +1,7 @@
 # experiment02：比较调研工作规则
 
+> **已归档（2026-10-19，原路径保留）。**以下为历史规则；候选、预算及执行授权不再生效。当前任务从[exploration04](../exploration04_simple_baseline/AGENTS.md)进入；仅明确回顾本轮时按下文阅读。
+
 固定入口：本文件 → [MISSION.md](MISSION.md) → [REVIEW.md](REVIEW.md)。默认中文、单 Agent；只沿当前问题的证据链接读取，不预载全仓材料。
 
 ## 本轮定位

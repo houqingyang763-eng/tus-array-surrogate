@@ -1,9 +1,5 @@
-# GPT / Codex阅读入口
+# GPT / Codex 阅读入口
 
-当前调查按 [experiment02/AGENTS](experiments/survey&design/experiment02/AGENTS.md) → [MISSION](experiments/survey&design/experiment02/MISSION.md) → [REVIEW](experiments/survey&design/experiment02/REVIEW.md) 阅读；结果入口为 [REPORT](experiments/survey&design/experiment02/REPORT.md)。默认中文、单Agent。
+默认中文。当前轮次固定入口：[AGENTS](experiments/survey&design/exploration04_simple_baseline/AGENTS.md) → [MISSION](experiments/survey&design/exploration04_simple_baseline/MISSION.md) → [REVIEW](experiments/survey&design/exploration04_simple_baseline/REVIEW.md)。S1完成，推荐现有变密度Born/Universal Split，判断见[REPORT](experiments/survey&design/exploration04_simple_baseline/REPORT.md)；本轮未运行实验。
 
-- 先查[文献索引](docs/literature_seen_index.md)，区分已知论文、家族延伸和本次新增证据。
-- 本轮多源总场与可更换介质仅为比较研究目标，不据此修改[V10合同](docs/project_design_handoff_v10.md)、单源接口或已有实验。
-- 全部迭代、源处理、介质准备、网络、数据移动和输出分别计入；保持复场形状评价，禁用raw验收。
-- 当前只有文献与分析交付，未授权服务器/实验/训练或自动延续前轮原创设计。
-- 本main是资料快照，不能将完整本地研究HEAD直接push覆盖；历史材料按[轮次地图](experiments/survey&design/README.md)按需阅读。
+旧0–3轮[原位归档](experiments/survey&design/README.md)，不继承旧排序或执行授权。经典家族、具体实现采用程度、论文结果、项目历史实测和待验证学习机制分开解释。仅颅内复场形状评价，保留相位，不恢复raw/阵列拼接目标。此main为阅读快照，不以本地完整分支替换。

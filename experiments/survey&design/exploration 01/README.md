@@ -1,5 +1,7 @@
 # exploration 01：学习迭代求解的方法创新
 
+> **已归档（2026-10-19，原路径保留）。**以下正文记录当时的研究与状态，不构成当前推荐或授权；现行任务见[exploration04](../exploration04_simple_baseline/README.md)。
+
 2026-10-16。固定入口：[AGENTS](AGENTS.md) → [MISSION](MISSION.md) → [REVIEW](REVIEW.md)。
 
 - **判断：**框架重建和首轮检索、查重、构思均已完成；只保留[骨层双面耦合界面校正](coupled_interface/README.md)继续设计。
